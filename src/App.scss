@@ -1,0 +1,64 @@
+@import './assets/variables.scss';
+
+html {
+  box-sizing: border-box;
+  font-family:
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif
+  ;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1440px;
+  justify-content: center;
+}
+
+.timerX {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 70%;
+  max-width: 1200px;
+  height: 100vh;
+}
+
+.timer-box {
+  display: flex;
+  width: 150px;
+  height: 100vh;
+}
+
+.focus {
+  z-index: 3;
+}
+
+.long-break {
+  z-index: 2;
+  transform: translateX(-25px);
+}
+
+.short-break {
+  z-index: 1;
+  transform: translateX(-50px);
+}
+

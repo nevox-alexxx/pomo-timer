@@ -1,0 +1,61 @@
+@import "../../assets/variables.scss";
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.settings-container {
+  background-color: $phocus-light-background;
+}
+
+.settings-header h2 {
+  color: $phocus-light-text-color;
+}
+
+.custom-number-input {
+  border: 1px solid #d3d3d3;
+  background-color: $phocus-light-background;
+}
+
+input[type="number"] {
+  color: $phocus-light-text-color;
+}
+
+.button-wrapper {
+  border-left: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+button {
+  color: $phocus-light-text-color;
+}
+
+button:active {
+  background-color: #d3c2c2;
+}
+
+.settings-item label {
+  color: $phocus-light-text-color;
+}
+
+.slider {
+  background-color: #c2b8b8;
+}
+
+.slider:before {
+  background-color: $phocus-light-background;
+}
+
+input:checked + .slider {
+  background-color: #474040;
+}
+
+input:checked + .slider:before {
+  transform: translateX(13.5px);
+}
+
+.line {
+  background-color: #000000;
+}

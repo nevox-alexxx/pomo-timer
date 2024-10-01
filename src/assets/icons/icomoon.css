@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?5auf7n');
+  src:  url('fonts/icomoon.eot?5auf7n#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5auf7n') format('truetype'),
+    url('fonts/icomoon.woff?5auf7n') format('woff'),
+    url('fonts/icomoon.svg?5auf7n#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: x-large;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-brain {
+  font-weight: 600;
+}
+
+.icon-cup-long:before {
+  content: "\e900";
+  color: #153047;
+}
+
+.icon-cup-short:before {
+  content: "\e900";
+  color: #14401d;
+}
+
+.icon-statistic:before {
+  content: "\e901";
+  color: #471515;
+}
+
+.icon-x:before {
+  content: "\e902";
+  color: #471515;
+}
+
+.icon-setings:before {
+  content: "\e903";
+  color: #471515;
+}
+
+.icon-fast-forward:before {
+  content: "\e904";
+  color: #471515;
+}
+
+.icon-fast-forward-long:before {
+  content: "\e904";
+  color: #153047;
+}
+
+.icon-fast-forward-short:before {
+  content: "\e904";
+  color: #14401d;
+}
+
+.icon-play:before {
+  content: "\e905";
+  color: #471515;
+}
+
+.icon-play-short:before {
+  content: "\e905";
+  color: #14401d;
+}
+
+.icon-play-long:before {
+  content: "\e905";
+  color: #153047;
+}
+
+.icon-pause:before {
+  content: "\e906";
+  color: #471515;
+}
+
+.icon-pause-short:before {
+  content: "\e906";
+  color: #14401d;
+}
+
+.icon-pause-long:before {
+  content: "\e906";
+  color: #153047;
+}
+
+.icon-menu:before {
+  content: "\e907";
+  color: #471515;
+}
+
+.icon-menu-long:before {
+  content: "\e907";
+  color: #153047;
+}
+
+.icon-menu-short:before {
+  content: "\e907";
+  color: #14401d;
+}
+
+.icon-clock .path1:before {
+  content: "\e908";
+  color: rgb(71, 21, 21);
+}
+
+.icon-clock .path2:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: none;
+}
+
+.icon-clock .path3:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(255, 217, 217);
+}
+
+.icon-clock .path4:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: none;
+}
+
+.icon-clock .path5:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: none;
+}
+
+.icon-brain:before {
+  content: "\e90d";
+  color: #471515;
+}
+
+.icon-backBtn:before {
+  content: "\e90e";
+  color: #471515;
+}
+
+.icon-arrow:before {
+  content: "\e90f";
+  color: #471515;
+}
