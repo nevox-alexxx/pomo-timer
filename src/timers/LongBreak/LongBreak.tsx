@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom"
 import classNames from "classnames";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 
-import './TimerStyle.scss';
-import './ShortBreak.scss';
+import '../TimerStyle.scss';
+import './LongBreak.scss';
 
-import { useTimer } from './useTimer';
-import { Modal } from "../components/Modal/Modal";
+import { useTimer } from '../useTimer';
+import { Modal } from "../../components/Modal/Modal";
 
-interface ShortBreakProps {
-  defaultShortBreak: number;
+interface LongBreakProps {
+  defaultLongBreak: number;
 }
 
-export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
+export function LongBreak({ defaultLongBreak = 15 }: LongBreakProps) {
 
   const [focusTime, setFocusTime] = useState<number>(() => {
     const savedFocusTime = localStorage.getItem('focusTime');
@@ -21,13 +21,15 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
 
   const [shortTime, setShortTime] = useState<number>(() => {
     const savedShortTime = localStorage.getItem('shortTime');
-    return savedShortTime ? parseInt(savedShortTime) : defaultShortBreak;
+    return savedShortTime ? parseInt(savedShortTime) : 5;
   });
 
   const [longTime, setLongTime] = useState<number>(() => {
     const savedLongTime = localStorage.getItem('longTime');
-    return savedLongTime ? parseInt(savedLongTime) : 15;
+    return savedLongTime ? parseInt(savedLongTime) : defaultLongBreak;
   });
+
+  //TODO: need replace magical values (25, 5, 15)
 
   const {
     timeLeft,
@@ -39,13 +41,13 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
     modalWindowIsOpen,
     windowIsOpen,
     windowIsClose
-  } = useTimer({ defaultTime: shortTime });
+  } = useTimer({ defaultTime: longTime });
 
   const btnClass = classNames({
     btn: true,
-    'start__btn short-break-start__btn': true,
-    'icon-play-short': !isPressed,
-    'icon-pause-short': isPressed,
+    'start__btn long-break-start__btn': true,
+    'icon-play-long': !isPressed,
+    'icon-pause-long': isPressed,
   });
 
   const handleSaveSettings = (newFocusTime: number, newShortTime: number, newLongTime: number) => {
@@ -54,7 +56,7 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
     setLongTime(newLongTime);
     windowIsClose();
     reset();
-    setTimeLeft(newShortTime * 60);
+    setTimeLeft(newLongTime * 60);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
     localStorage.setItem('shortTime', newShortTime.toString());
@@ -62,30 +64,32 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
 
     windowIsClose();
     reset();
-    setTimeLeft(newShortTime * 60);
+    setTimeLeft(newLongTime * 60);
   };
 
   useEffect(() => {
-    setTimeLeft(shortTime * 60);
-  }, [shortTime, setTimeLeft]);
+    setTimeLeft(longTime * 60);
+  }, [longTime, setTimeLeft]); 
 
   return (
-    <div className="short-break-background background">
-      <div className="short-break-main-container main-container">
-        <Link to="/FocusTimer" className="short-break-mode__btn mode__btn" >
-          <p className="short-break-mode__ico mode__ico icon-cup-short"></p>
-          <p className="short-break-mode__text mode__text" >Short Break</p>
+    <div className="long-break-background background">
+      <div className="long-break-main-container main-container">
+        <Link to="/ShortBreak" className="long-break-mode__btn mode__btn" >
+          <p className="mode__ico icon-cup-long"></p>
+          <p className="long-break-mode__text mode__text" >Long Break</p>
         </Link>
 
-        <div className="short-break-timer timer">
+        <div className="long-break-timer timer">
           {formatTime(timeLeft)}
         </div>
 
         <div className="handler-buttons">
-          <button className="
-            short-break-menu__btn
-            handler__btn
-            icon-menu-short"onClick={windowIsOpen}
+          <button
+            className="
+              long-break-menu__btn 
+              handler__btn 
+              icon-menu-long"
+            onClick={windowIsOpen}
           >
           </button>
 
@@ -108,10 +112,9 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
           </button>
 
           <button
-            className="
-              short-break-forward__btn
-              handler__btn
-              icon-fast-forward-short"
+            className="handler__btn
+              long-break-forward__btn 
+              icon-fast-forward-long"
             onClick={reset}>
           </button>
         </div>

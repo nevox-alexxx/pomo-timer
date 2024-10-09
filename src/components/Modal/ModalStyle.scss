@@ -1,9 +1,11 @@
-@import "../../assets/variables.scss";
+@import "../../assets/color-variables.scss";
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type="number"] {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
 }
 
 .settings-container {
@@ -12,31 +14,41 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 20px;
   width: 50vw;
   max-width: 350px;
-  background-color: $phocus-light-background;
+  background-color: $focus-light-background;
   position: relative;
   flex-direction: column;
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
+
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+
+    h2 {
+      margin: 0;
+      color: $focus-light-text-color;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
 }
 
-.settings-header {
+.settings-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 20px;
-}
+  margin: 15px 0;
 
-.settings-header h2 {
-  margin: 0;
-  color: $phocus-light-text-color;
+  label {
+    color: $focus-light-text-color;
+  }
 }
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
 
 .custom-number-input {
   display: flex;
@@ -45,47 +57,51 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid #d3d3d3;
   border-radius: 10px;
   overflow: hidden;
-  background-color: $phocus-light-background;
+  background-color: $focus-light-background;
   padding: 5px;
   width: 85px;
   height: 35px;
-}
 
-input[type="number"] {
-  width: 50%;
-  text-align: center;
-  border: none;
-  font-size: 1.1em;
-  background-color: transparent;
-  color: $phocus-light-text-color;
-  padding: 5px;
-}
+  input[type="number"] {
+    width: 50%;
+    text-align: center;
+    border: none;
+    font-size: 1.1em;
+    background-color: transparent;
+    color: $focus-light-text-color;
+    padding: 5px;
+  
+    &:focus {
+      outline: none;
+    }
+  }
 
-input[type="number"]:focus {
-  outline: none;
-}
-
-.button-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30%;
-  height: 45px;
-  border-left: 1px solid #d3d3d3;
-  border-bottom: 1px solid #d3d3d3;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  font-size: 1em;
-  color: $phocus-light-text-color;
-  cursor: pointer;
-  padding: 5px;
-}
-
-button:active {
-  background-color: #d3c2c2;
+  .button-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    height: 45px;
+    border-left: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+  
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 1em;
+      color: $focus-light-text-color;
+      cursor: pointer;
+      padding: 5px;
+  
+      &:active {
+        background-color: #d3c2c2;
+      }
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 }
 
 .arrow-up, .arrow-down {
@@ -95,67 +111,45 @@ button:active {
   height: 50%;
 }
 
-button:focus {
-  outline: none;
-}
-
-.settings-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 15px 0;
-}
-
-.settings-item label {
-  color: $phocus-light-text-color;
-}
-
 .toggle {
   position: relative;
-}
 
-.toggle input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    background-color: #c2b8b8;
+    transition: 0.4s;
+    width: 34px;
+    height: 20px;
+    border-radius: 20px;
 
-.slider {
-  position: relative;
-  display: block;
-  cursor: pointer;
-  background-color: #c2b8b8;
-  transition: 0.4s;
-  width: 34px;
-  height: 20px;
-  border-radius: 20px;
-}
+    &:before {
+      content: "";
+      position: absolute;
+      cursor: pointer;
+      background-color: $focus-light-background;
+      transition: 0.4s;
+      width: 16px;
+      height: 16px;
+      border-radius: 20px;
+      top: 2px;
+      left: 2px;
+    }
+  }
 
-.slider:before {
-  content: "";
-  position: absolute;
-  cursor: pointer;
-  background-color: $phocus-light-background;
-  transition: 0.4s;
-  width: 16px;
-  height: 16px;
-  border-radius: 20px;
-  top: 2px;
-  left: 2px;
-}
-
-input:checked + .slider {
-  background-color: #474040;
-}
-
-input:checked + .slider:before {
-  transform: translateX(13.5px);
-}
-
-.line {
-  width: 100%;
-  height: 12px;
-  background-color: #000000;
-  z-index: 1;
+  input:checked + .slider {
+    background-color: #474040;
+  
+    &:before {
+      transform: translateX(13.5px);
+    }
+  }
 }

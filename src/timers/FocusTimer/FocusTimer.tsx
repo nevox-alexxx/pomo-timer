@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
 
-import './TimerStyle.scss';
+import '../TimerStyle.scss';
 import './FocusTimer.scss';
 
-import { useTimer } from './useTimer';
-import { Modal } from "../components/Modal/Modal";
+import { useTimer } from '../useTimer';
+import { Modal } from "../../components/Modal/Modal";
 
 interface FocusTimerProps {
   defaultFocusTime: number;
 }
+
+//TODO: move interfaces into a separate file -TimerDelay
 
 export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
 
@@ -28,6 +30,8 @@ export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
     const savedLongTime = localStorage.getItem('longTime');
     return savedLongTime ? parseInt(savedLongTime) : 15;
   });
+
+  //TODO: need replace magical values (25, 5, 15)
 
   const {
     timeLeft,

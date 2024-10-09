@@ -1,4 +1,4 @@
-@import './assets/variables.scss';
+@import './assets/color-variables.scss';
 
 html {
   box-sizing: border-box;
@@ -22,6 +22,14 @@ body {
 h1 {
   margin: 0;
   padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 .container {

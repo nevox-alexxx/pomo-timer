@@ -1,11 +1,3 @@
-p {
-  margin: 0;
-}
-
-button {
-  cursor: pointer;
-}
-
 .background {
   width: 100vw;
   height: 100vh;
@@ -85,3 +77,5 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+//TODO: optimize using scss

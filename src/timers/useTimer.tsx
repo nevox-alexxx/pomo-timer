@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 interface TimerProps {
   defaultTime: number;
-  
 }
 
 export function useTimer({defaultTime}: TimerProps) {
@@ -32,6 +31,8 @@ export function useTimer({defaultTime}: TimerProps) {
     setIsPressed(prev => !prev);
   };
 
+  //TODO: rename (toggle what?)
+
   const reset = () => {
     if (isActive){
       setIsActive(false);
@@ -43,6 +44,9 @@ export function useTimer({defaultTime}: TimerProps) {
       setIsPressed(isActive);
     }
   };
+  //TODO: rename (reset what?)
+
+  //TODO: What is '60' magical value, replace
 
   const formatTime = (totalSeconds: number) => {
     const minutes = Math.floor(totalSeconds / 60);

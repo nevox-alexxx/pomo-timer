@@ -15,6 +15,7 @@ export function InfoBlock() {
       </div>
 
       <p className="version">V. 0.1.0</p>
+      {/* TODO: add variable of version */}
 
     </div>
   )

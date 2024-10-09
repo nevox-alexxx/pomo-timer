@@ -1,4 +1,4 @@
-@import '../assets/variables.scss';
+@import '../../assets/color-variables.scss';
 
 .long-break-background {
   background-color: $long-break-light-background;
@@ -35,3 +35,5 @@
 .long-break-start__btn {
   background-color: $long-break-light-switch-btn;
 }
+
+//TODO: optimize using scss

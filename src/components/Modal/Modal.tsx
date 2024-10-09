@@ -66,6 +66,7 @@ export function Modal({
     onSave(focusTime, shortTime, longTime);
     onClose();
   };
+  //TODO: rename handleSaveAndClose -> handleSaving
 
   if (!isOpen) {
     return null;
@@ -73,7 +74,7 @@ export function Modal({
 
   return (
     <div className="settings-container">
-      <div className="settings-header">
+      <div className="settings-container--header">
         <h2>Settings</h2>
         <button 
           className="close-btn" 

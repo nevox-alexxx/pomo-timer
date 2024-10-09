@@ -1,0 +1,51 @@
+@import '../../assets/color-variables.scss';
+
+.focus-background {
+  background-color: $focus-light-background;
+}
+
+.focus-main-container {
+  background-color: $focus-light-background;
+}
+
+.focus-mode__btn {
+  background-color: $focus-light-secondary-btn;
+  border: 2px solid $focus-light-text-color;
+  width: 120px;
+}
+
+.focus-mode__ico {
+  background-image: url(../../assets/icons/icoBackUp/brain.svg);
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+}
+
+.focus-mode__text {
+  color: $focus-light-text-color;
+}
+
+.focus-timer {
+  color: $focus-light-text-color;
+}
+
+.focus-menu__btn {
+  margin-right: 15px;
+  background-color: $focus-light-secondary-btn;
+}
+
+.focus-forward__btn {
+  margin-left: 15px;
+  background-color: $focus-light-secondary-btn;
+}
+
+.focus-start__btn {
+  background-color: $focus-light-switch-btn;
+}
+
+.btn-pressed {
+  background-color: gray;
+}
+
+
+//TODO: optimize using scss

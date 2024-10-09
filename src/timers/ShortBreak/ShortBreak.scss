@@ -1,4 +1,4 @@
-@import '../assets/variables.scss';
+@import '../../assets/color-variables.scss';
 
 .short-break-background {
   background-color: $short-break-light-background;
@@ -35,3 +35,5 @@
 .short-break-start__btn {
   background-color: $short-break-light-switch-btn;
 }
+
+//TODO: optimize using scss
