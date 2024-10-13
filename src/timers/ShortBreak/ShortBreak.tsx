@@ -6,17 +6,14 @@ import '../TimerStyle.scss';
 import './ShortBreak.scss';
 
 import { useTimer } from '../useTimer';
-import { Modal } from "../../components/Modal/Modal";
+import { Modal } from '../../components/Modal/Modal';
+import {TimerDelay} from '../TimerDelay';
 
-interface ShortBreakProps {
-  defaultShortBreak: number;
-}
-
-export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
+export function ShortBreak({ defaultShortBreak, defaultFocusTime, defaultLongBreak }: TimerDelay) {
 
   const [focusTime, setFocusTime] = useState<number>(() => {
     const savedFocusTime = localStorage.getItem('focusTime');
-    return savedFocusTime ? parseInt(savedFocusTime) : 25;
+    return savedFocusTime ? parseInt(savedFocusTime) : defaultFocusTime;
   });
 
   const [shortTime, setShortTime] = useState<number>(() => {
@@ -26,15 +23,13 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
 
   const [longTime, setLongTime] = useState<number>(() => {
     const savedLongTime = localStorage.getItem('longTime');
-    return savedLongTime ? parseInt(savedLongTime) : 15;
+    return savedLongTime ? parseInt(savedLongTime) : defaultLongBreak;
   });
-
-  //TODO: need replace magical values (25, 5, 15)
 
   const {
     timeLeft,
-    toggle,
-    reset,
+    togglePlay,
+    resetTimer,
     formatTime,
     setTimeLeft,
     isPressed,
@@ -55,7 +50,7 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
     setShortTime(newShortTime);
     setLongTime(newLongTime);
     windowIsClose();
-    reset();
+    resetTimer();
     setTimeLeft(newShortTime * 60);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
@@ -63,7 +58,7 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
     localStorage.setItem('longTime', newLongTime.toString());
 
     windowIsClose();
-    reset();
+    resetTimer();
     setTimeLeft(newShortTime * 60);
   };
 
@@ -106,7 +101,7 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
 
           <button
             className={btnClass}
-            onClick={toggle}>
+            onClick={togglePlay}>
           </button>
 
           <button
@@ -114,7 +109,7 @@ export function ShortBreak({ defaultShortBreak = 5 }: ShortBreakProps) {
               short-break-forward__btn
               handler__btn
               icon-fast-forward-short"
-            onClick={reset}>
+            onClick={resetTimer}>
           </button>
         </div>
       </div>

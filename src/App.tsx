@@ -13,15 +13,27 @@ function App() {
 
       <div className="timerX">
         <div className="timer-box focus">
-          <FocusTimer defaultFocusTime={25} />
+          <FocusTimer
+            defaultFocusTime={25}
+            defaultShortBreak={5}
+            defaultLongBreak={15}
+          />
         </div>
 
         <div className="timer-box long-break">
-          <LongBreak defaultLongBreak={15}/>
+          <LongBreak
+            defaultFocusTime={25}
+            defaultShortBreak={5}
+            defaultLongBreak={15}
+          />
         </div>
 
         <div className="timer-box short-break">
-          <ShortBreak defaultShortBreak={5} />
+          <ShortBreak 
+            defaultFocusTime={25}
+            defaultShortBreak={5}
+            defaultLongBreak={15}
+          />
         </div>
       </div>
     </div>

@@ -7,14 +7,9 @@ import './FocusTimer.scss';
 
 import { useTimer } from '../useTimer';
 import { Modal } from "../../components/Modal/Modal";
+import {TimerDelay} from '../TimerDelay';
 
-interface FocusTimerProps {
-  defaultFocusTime: number;
-}
-
-//TODO: move interfaces into a separate file -TimerDelay
-
-export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
+export function FocusTimer({ defaultShortBreak, defaultFocusTime, defaultLongBreak }: TimerDelay) {
 
   const [focusTime, setFocusTime] = useState<number>(() => {
     const savedFocusTime = localStorage.getItem('focusTime');
@@ -23,20 +18,18 @@ export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
 
   const [shortTime, setShortTime] = useState<number>(() => {
     const savedShortTime = localStorage.getItem('shortTime');
-    return savedShortTime ? parseInt(savedShortTime) : 5;
+    return savedShortTime ? parseInt(savedShortTime) : defaultShortBreak;
   });
 
   const [longTime, setLongTime] = useState<number>(() => {
     const savedLongTime = localStorage.getItem('longTime');
-    return savedLongTime ? parseInt(savedLongTime) : 15;
+    return savedLongTime ? parseInt(savedLongTime) : defaultLongBreak;
   });
-
-  //TODO: need replace magical values (25, 5, 15)
 
   const {
     timeLeft,
-    toggle,
-    reset,
+    togglePlay,
+    resetTimer,
     setTimeLeft,
     formatTime,
     isPressed,
@@ -57,7 +50,7 @@ export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
     setShortTime(newShortTime);
     setLongTime(newLongTime);
     windowIsClose();
-    reset();
+    resetTimer();
     setTimeLeft(newFocusTime * 60);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
@@ -65,7 +58,7 @@ export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
     localStorage.setItem('longTime', newLongTime.toString());
 
     windowIsClose();
-    reset();
+    resetTimer();
     setTimeLeft(newFocusTime * 60);
   };
 
@@ -107,13 +100,13 @@ export function FocusTimer({ defaultFocusTime = 25 }: FocusTimerProps) {
 
           <button
             className={btnClass}
-            onClick={toggle}
+            onClick={togglePlay}
           >
           </button>
 
           <button
             className="focus-forward__btn handler__btn icon-fast-forward"
-            onClick={reset}
+            onClick={resetTimer}
           >
           </button>
         </div>

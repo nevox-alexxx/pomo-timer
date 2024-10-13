@@ -5,8 +5,12 @@ interface TimerProps {
 }
 
 export function useTimer({defaultTime}: TimerProps) {
+  const SECONDS_IN_MINUTE = 60;
   const [isActive, setIsActive] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(defaultTime * 60);
+  
+  // Initialize the time in seconds by multiplying defaultTime (in minutes) by SECONDS_IN_MINUTE,
+  // since the timer works in seconds intervals.
+  const [timeLeft, setTimeLeft] = useState(defaultTime * SECONDS_IN_MINUTE);
 
   const [isPressed, setIsPressed] = useState(false);
   const [modalWindowIsOpen, setModalWindowIsOpen] = useState(false);
@@ -26,31 +30,26 @@ export function useTimer({defaultTime}: TimerProps) {
     return () => clearInterval(interval);
   }, [isActive, timeLeft]);
 
-  const toggle = () => {
+  const togglePlay = () => {
     setIsActive(!isActive);
     setIsPressed(prev => !prev);
   };
 
-  //TODO: rename (toggle what?)
-
-  const reset = () => {
+  const resetTimer = () => {
     if (isActive){
       setIsActive(false);
-      setTimeLeft(defaultTime * 60);
+      setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
       setIsPressed(!isActive);
     } else if (!isActive) {
       setIsActive(false);
-      setTimeLeft(defaultTime * 60);
+      setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
       setIsPressed(isActive);
     }
   };
-  //TODO: rename (reset what?)
-
-  //TODO: What is '60' magical value, replace
 
   const formatTime = (totalSeconds: number) => {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
+    const minutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
+    const seconds = totalSeconds % SECONDS_IN_MINUTE;
     return (
       <div>
         <span>{String(minutes).padStart(2, '0')}</span>
@@ -66,8 +65,8 @@ export function useTimer({defaultTime}: TimerProps) {
   return { 
     timeLeft, 
     isActive, 
-    toggle, 
-    reset, 
+    togglePlay, 
+    resetTimer, 
     formatTime, 
     isPressed, 
     modalWindowIsOpen, 

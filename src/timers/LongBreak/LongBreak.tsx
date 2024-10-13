@@ -7,21 +7,18 @@ import './LongBreak.scss';
 
 import { useTimer } from '../useTimer';
 import { Modal } from "../../components/Modal/Modal";
+import {TimerDelay} from '../TimerDelay';
 
-interface LongBreakProps {
-  defaultLongBreak: number;
-}
-
-export function LongBreak({ defaultLongBreak = 15 }: LongBreakProps) {
+export function LongBreak({ defaultShortBreak, defaultFocusTime, defaultLongBreak }: TimerDelay) {
 
   const [focusTime, setFocusTime] = useState<number>(() => {
     const savedFocusTime = localStorage.getItem('focusTime');
-    return savedFocusTime ? parseInt(savedFocusTime) : 25;
+    return savedFocusTime ? parseInt(savedFocusTime) : defaultFocusTime;
   });
 
   const [shortTime, setShortTime] = useState<number>(() => {
     const savedShortTime = localStorage.getItem('shortTime');
-    return savedShortTime ? parseInt(savedShortTime) : 5;
+    return savedShortTime ? parseInt(savedShortTime) : defaultShortBreak;
   });
 
   const [longTime, setLongTime] = useState<number>(() => {
@@ -29,12 +26,10 @@ export function LongBreak({ defaultLongBreak = 15 }: LongBreakProps) {
     return savedLongTime ? parseInt(savedLongTime) : defaultLongBreak;
   });
 
-  //TODO: need replace magical values (25, 5, 15)
-
   const {
     timeLeft,
-    toggle,
-    reset,
+    togglePlay,
+    resetTimer,
     formatTime,
     setTimeLeft,
     isPressed,
@@ -55,7 +50,7 @@ export function LongBreak({ defaultLongBreak = 15 }: LongBreakProps) {
     setShortTime(newShortTime);
     setLongTime(newLongTime);
     windowIsClose();
-    reset();
+    resetTimer();
     setTimeLeft(newLongTime * 60);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
@@ -63,7 +58,7 @@ export function LongBreak({ defaultLongBreak = 15 }: LongBreakProps) {
     localStorage.setItem('longTime', newLongTime.toString());
 
     windowIsClose();
-    reset();
+    resetTimer();
     setTimeLeft(newLongTime * 60);
   };
 
@@ -108,14 +103,14 @@ export function LongBreak({ defaultLongBreak = 15 }: LongBreakProps) {
 
           <button
             className={btnClass}
-            onClick={toggle}>
+            onClick={togglePlay}>
           </button>
 
           <button
             className="handler__btn
               long-break-forward__btn 
               icon-fast-forward-long"
-            onClick={reset}>
+            onClick={resetTimer}>
           </button>
         </div>
       </div>
