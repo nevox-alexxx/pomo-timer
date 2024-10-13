@@ -35,15 +35,17 @@ export function LongBreak({ defaultShortBreak, defaultFocusTime, defaultLongBrea
     isPressed,
     modalWindowIsOpen,
     windowIsOpen,
-    windowIsClose
+    windowIsClose,
+    SECONDS_IN_MINUTE
   } = useTimer({ defaultTime: longTime });
 
-  const btnClass = classNames({
-    btn: true,
-    'start__btn long-break-start__btn': true,
-    'icon-play-long': !isPressed,
-    'icon-pause-long': isPressed,
-  });
+  const btnClass = classNames(
+    'btn',
+    'start__btn long-break-start__btn',
+    {
+      'icon-play-long': !isPressed,
+      'icon-pause-long': isPressed,
+    });
 
   const handleSaveSettings = (newFocusTime: number, newShortTime: number, newLongTime: number) => {
     setFocusTime(newFocusTime);
@@ -51,7 +53,7 @@ export function LongBreak({ defaultShortBreak, defaultFocusTime, defaultLongBrea
     setLongTime(newLongTime);
     windowIsClose();
     resetTimer();
-    setTimeLeft(newLongTime * 60);
+    setTimeLeft(newLongTime * SECONDS_IN_MINUTE);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
     localStorage.setItem('shortTime', newShortTime.toString());
@@ -59,12 +61,12 @@ export function LongBreak({ defaultShortBreak, defaultFocusTime, defaultLongBrea
 
     windowIsClose();
     resetTimer();
-    setTimeLeft(newLongTime * 60);
+    setTimeLeft(newLongTime * SECONDS_IN_MINUTE);
   };
 
   useEffect(() => {
-    setTimeLeft(longTime * 60);
-  }, [longTime, setTimeLeft]); 
+    setTimeLeft(longTime * SECONDS_IN_MINUTE);
+  }, [longTime, SECONDS_IN_MINUTE, setTimeLeft]); 
 
   return (
     <div className="long-break-background background">

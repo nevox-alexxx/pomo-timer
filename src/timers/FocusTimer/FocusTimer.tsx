@@ -7,7 +7,7 @@ import './FocusTimer.scss';
 
 import { useTimer } from '../useTimer';
 import { Modal } from "../../components/Modal/Modal";
-import {TimerDelay} from '../TimerDelay';
+import { TimerDelay } from '../TimerDelay';
 
 export function FocusTimer({ defaultShortBreak, defaultFocusTime, defaultLongBreak }: TimerDelay) {
 
@@ -35,15 +35,17 @@ export function FocusTimer({ defaultShortBreak, defaultFocusTime, defaultLongBre
     isPressed,
     modalWindowIsOpen,
     windowIsOpen,
-    windowIsClose
+    windowIsClose,
+    SECONDS_IN_MINUTE
   } = useTimer({ defaultTime: focusTime });
 
-  const btnClass = classNames({
-    btn: true,
-    'start__btn focus-start__btn': true,
-    'icon-play': !isPressed,
-    'icon-pause': isPressed,
-  });
+  const btnClass = classNames(
+    'btn',
+    'start__btn focus-start__btn',
+    {
+      'icon-play': !isPressed,
+      'icon-pause': isPressed,
+    });
 
   const handleSaveSettings = (newFocusTime: number, newShortTime: number, newLongTime: number) => {
     setFocusTime(newFocusTime);
@@ -51,7 +53,7 @@ export function FocusTimer({ defaultShortBreak, defaultFocusTime, defaultLongBre
     setLongTime(newLongTime);
     windowIsClose();
     resetTimer();
-    setTimeLeft(newFocusTime * 60);
+    setTimeLeft(newFocusTime * SECONDS_IN_MINUTE);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
     localStorage.setItem('shortTime', newShortTime.toString());
@@ -59,12 +61,12 @@ export function FocusTimer({ defaultShortBreak, defaultFocusTime, defaultLongBre
 
     windowIsClose();
     resetTimer();
-    setTimeLeft(newFocusTime * 60);
+    setTimeLeft(newFocusTime * SECONDS_IN_MINUTE);
   };
 
   useEffect(() => {
-    setTimeLeft(focusTime * 60);
-  }, [focusTime, setTimeLeft]);
+    setTimeLeft(focusTime * SECONDS_IN_MINUTE);
+  }, [focusTime, SECONDS_IN_MINUTE, setTimeLeft]);
 
   return (
     <div className="focus-background background">

@@ -62,11 +62,10 @@ export function Modal({
     setLongTime(Number(event.target.value));
   };
 
-  const handleSaveAndClose = () => {
+  const handleSaving = () => {
     onSave(focusTime, shortTime, longTime);
     onClose();
   };
-  //TODO: rename handleSaveAndClose -> handleSaving
 
   if (!isOpen) {
     return null;
@@ -78,7 +77,7 @@ export function Modal({
         <h2>Settings</h2>
         <button 
           className="close-btn" 
-          onClick={handleSaveAndClose}
+          onClick={handleSaving}
         >&times;</button>
       </div>
 

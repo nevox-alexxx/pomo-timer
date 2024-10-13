@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
 import classNames from "classnames";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 
 import '../TimerStyle.scss';
 import './ShortBreak.scss';
 
 import { useTimer } from '../useTimer';
 import { Modal } from '../../components/Modal/Modal';
-import {TimerDelay} from '../TimerDelay';
+import { TimerDelay } from '../TimerDelay';
 
 export function ShortBreak({ defaultShortBreak, defaultFocusTime, defaultLongBreak }: TimerDelay) {
 
@@ -35,15 +35,17 @@ export function ShortBreak({ defaultShortBreak, defaultFocusTime, defaultLongBre
     isPressed,
     modalWindowIsOpen,
     windowIsOpen,
-    windowIsClose
+    windowIsClose,
+    SECONDS_IN_MINUTE
   } = useTimer({ defaultTime: shortTime });
 
-  const btnClass = classNames({
-    btn: true,
-    'start__btn short-break-start__btn': true,
-    'icon-play-short': !isPressed,
-    'icon-pause-short': isPressed,
-  });
+  const btnClass = classNames(
+    'btn',
+    'start__btn short-break-start__btn',
+    {
+      'icon-play-short': !isPressed,
+      'icon-pause-short': isPressed,
+    });
 
   const handleSaveSettings = (newFocusTime: number, newShortTime: number, newLongTime: number) => {
     setFocusTime(newFocusTime);
@@ -51,7 +53,7 @@ export function ShortBreak({ defaultShortBreak, defaultFocusTime, defaultLongBre
     setLongTime(newLongTime);
     windowIsClose();
     resetTimer();
-    setTimeLeft(newShortTime * 60);
+    setTimeLeft(newShortTime * SECONDS_IN_MINUTE);
 
     localStorage.setItem('focusTime', newFocusTime.toString());
     localStorage.setItem('shortTime', newShortTime.toString());
@@ -59,12 +61,12 @@ export function ShortBreak({ defaultShortBreak, defaultFocusTime, defaultLongBre
 
     windowIsClose();
     resetTimer();
-    setTimeLeft(newShortTime * 60);
+    setTimeLeft(newShortTime * SECONDS_IN_MINUTE);
   };
 
   useEffect(() => {
-    setTimeLeft(shortTime * 60);
-  }, [shortTime, setTimeLeft]);
+    setTimeLeft(shortTime * SECONDS_IN_MINUTE);
+  }, [shortTime, SECONDS_IN_MINUTE, setTimeLeft]);
 
   return (
     <div className="short-break-background background">
