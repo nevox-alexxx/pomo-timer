@@ -1,10 +1,6 @@
 @import '../../assets/color-variables.scss';
 
-.long-break-background {
-  background-color: $long-break-light-background;
-}
-
-.long-break-main-container {
+.long-break-background, .long-break-main-container {
   background-color: $long-break-light-background;
 }
 
@@ -14,26 +10,24 @@
   width: 160px;
 }
 
-.long-break-mode__text {
+.long-break-mode__text, .long-break-timer{
   color: $long-break-light-text-color;
 }
 
-.long-break-timer {
-  color: $long-break-light-text-color;
-}
-
-.long-break-menu__btn {
-  margin-right: 15px;
-  background-color: $long-break-light-secondary-btn;
-}
-
-.long-break-forward__btn {
-  margin-left: 15px;
+.long-break-menu__btn, .long-break-forward__btn {
   background-color: $long-break-light-secondary-btn;
 }
 
 .long-break-start__btn {
   background-color: $long-break-light-switch-btn;
+}
+
+.long-break-menu__btn {
+  margin-right: 15px;
+}
+
+.long-break-forward__btn {
+  margin-left: 15px;
 }
 
 //TODO: optimize using scss

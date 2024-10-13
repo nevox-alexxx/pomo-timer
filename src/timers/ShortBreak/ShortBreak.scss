@@ -1,10 +1,6 @@
 @import '../../assets/color-variables.scss';
 
-.short-break-background {
-  background-color: $short-break-light-background;
-}
-
-.short-break-main-container {
+.short-break-background, .short-break-main-container {
   background-color: $short-break-light-background;
 }
 
@@ -14,21 +10,11 @@
   width: 160px;
 }
 
-.short-break-mode__text {
+.short-break-mode__text, .short-break-timer {
   color: $short-break-light-text-color;
 }
 
-.short-break-timer {
-  color: $short-break-light-text-color;
-}
-
-.short-break-menu__btn {
-  margin-right: 15px;
-  background-color: $short-break-light-secondary-btn;
-}
-
-.short-break-forward__btn {
-  margin-left: 15px;
+.short-break-menu__btn, .short-break-forward__btn {
   background-color: $short-break-light-secondary-btn;
 }
 
@@ -36,4 +22,10 @@
   background-color: $short-break-light-switch-btn;
 }
 
-//TODO: optimize using scss
+.short-break-menu__btn {
+  margin-right: 15px;
+}
+
+.short-break-forward__btn {
+  margin-left: 15px;
+}
