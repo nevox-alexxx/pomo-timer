@@ -2,10 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App.tsx'
-// import { FocusTimer } from './timers/FocusTimer/FocusTimer.tsx'
-// import { LongBreak } from './timers/LongBreak/LongBreak.tsx'
-// import { ShortBreak } from './timers/ShortBreak/ShortBreak.tsx'
-
 import { Timer } from './timers/Timer.tsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'

@@ -1,10 +1,6 @@
 import './App.scss';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
 
-// import { FocusTimer } from './timers/FocusTimer/FocusTimer';
-// import { LongBreak } from './timers/LongBreak/LongBreak';
-// import { ShortBreak } from './timers/ShortBreak/ShortBreak';
-
 import { Timer } from './timers/Timer';
 
 function App() {
