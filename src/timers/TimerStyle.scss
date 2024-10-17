@@ -1,3 +1,5 @@
+@import '../assets/color-variables.scss';
+
 .background {
   width: 100vw;
   height: 100vh;
@@ -78,4 +80,102 @@
   align-items: center;
 }
 
-//TODO: optimize using scss
+// Focus styles
+.focus-background, .focus-main-container {
+  background-color: $focus-light-background;
+}
+
+.focus-mode__btn {
+  background-color: $focus-light-secondary-btn;
+  border: 2px solid $focus-light-text-color;
+  width: 120px;
+}
+
+.focus-mode__ico {
+  background-image: url(../assets/icons/icoBackUp/brain.svg);
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+}
+
+.focus-mode__text, .focus-timer {
+  color: $focus-light-text-color;
+}
+
+.focus-menu__btn, .focus-forward__btn {
+  background-color: $focus-light-secondary-btn;
+}
+
+.focus-start__btn{
+  background-color: $focus-light-switch-btn;
+}
+
+.focus-menu__btn {
+  margin-right: 15px;
+}
+
+.focus-forward__btn {
+  margin-left: 15px;
+}
+
+// Long Break styles
+.long-break-background, .long-break-main-container {
+  background-color: $long-break-light-background;
+}
+
+.long-break-mode__btn {
+  background-color: $long-break-light-secondary-btn;
+  border: 2px solid $long-break-light-text-color;
+  width: 160px;
+}
+
+.long-break-mode__text, .long-break-timer{
+  color: $long-break-light-text-color;
+}
+
+.long-break-menu__btn, .long-break-forward__btn {
+  background-color: $long-break-light-secondary-btn;
+}
+
+.long-break-start__btn {
+  background-color: $long-break-light-switch-btn;
+}
+
+.long-break-menu__btn {
+  margin-right: 15px;
+}
+
+.long-break-forward__btn {
+  margin-left: 15px;
+}
+
+// Short Break styles
+.short-break-background, .short-break-main-container {
+  background-color: $short-break-light-background;
+}
+
+.short-break-mode__btn {
+  background-color: $short-break-light-secondary-btn;
+  border: 2px solid $short-break-light-text-color;
+  width: 160px;
+}
+
+.short-break-mode__text, .short-break-timer {
+  color: $short-break-light-text-color;
+}
+
+.short-break-menu__btn, .short-break-forward__btn {
+  background-color: $short-break-light-secondary-btn;
+}
+
+.short-break-start__btn {
+  background-color: $short-break-light-switch-btn;
+}
+
+.short-break-menu__btn {
+  margin-right: 15px;
+}
+
+.short-break-forward__btn {
+  margin-left: 15px;
+}
