@@ -10,6 +10,7 @@ export interface ModalProps {
 export interface SettingsItemProps {
   label: string;
   value: number;
+  timerName: 'focus' | 'short-break' | 'long-break';
   onIncrement: () => void;
   onDecrement: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,4 +19,5 @@ export interface SettingsItemProps {
 export interface ToggleSwitchProps {
   label: string;
   id: string;
+  timerName: 'focus' | 'short-break' | 'long-break';
 }

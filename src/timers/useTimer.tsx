@@ -47,6 +47,8 @@ export function useTimer({defaultTime}: TimerProps) {
     }
   };
 
+  //TODO: add a function that will be triggered when the timer expires (notification and reset)
+
   const formatTime = (totalSeconds: number) => {
     const minutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
     const seconds = totalSeconds % SECONDS_IN_MINUTE;

@@ -1,6 +1,7 @@
 @import "../../assets/color-variables.scss";
 
 input[type="number"] {
+
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -14,10 +15,9 @@ input[type="number"] {
   border-radius: 20px;
   width: 50vw;
   max-width: 350px;
-  background-color: $focus-light-background;
   position: relative;
   flex-direction: column;
-  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
 
   &--header {
     display: flex;
@@ -27,7 +27,6 @@ input[type="number"] {
 
     h2 {
       margin: 0;
-      color: $focus-light-text-color;
     }
 
     .close-btn {
@@ -44,33 +43,26 @@ input[type="number"] {
   justify-content: space-between;
   align-items: center;
   margin: 15px 0;
-
-  label {
-    color: $focus-light-text-color;
-  }
 }
 
 .custom-number-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #d3d3d3;
   border-radius: 10px;
   overflow: hidden;
-  background-color: $focus-light-background;
   padding: 5px;
   width: 85px;
   height: 35px;
 
-  input[type="number"] {
+  .number-input {
     width: 50%;
     text-align: center;
     border: none;
     font-size: 1.1em;
     background-color: transparent;
-    color: $focus-light-text-color;
     padding: 5px;
-  
+
     &:focus {
       outline: none;
     }
@@ -84,19 +76,18 @@ input[type="number"] {
     height: 45px;
     border-left: 1px solid #d3d3d3;
     border-bottom: 1px solid #d3d3d3;
-  
+
     button {
       background-color: transparent;
       border: none;
       font-size: 1em;
-      color: $focus-light-text-color;
       cursor: pointer;
       padding: 5px;
-  
+
       &:active {
         background-color: #d3c2c2;
       }
-  
+
       &:focus {
         outline: none;
       }
@@ -104,7 +95,8 @@ input[type="number"] {
   }
 }
 
-.arrow-up, .arrow-down {
+.arrow-up,
+.arrow-down {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,12 +112,11 @@ input[type="number"] {
     width: 0;
     height: 0;
   }
-  
+
   .slider {
     position: relative;
     display: block;
     cursor: pointer;
-    background-color: #c2b8b8;
     transition: 0.4s;
     width: 34px;
     height: 20px;
@@ -135,7 +126,6 @@ input[type="number"] {
       content: "";
       position: absolute;
       cursor: pointer;
-      background-color: $focus-light-background;
       transition: 0.4s;
       width: 16px;
       height: 16px;
@@ -145,11 +135,13 @@ input[type="number"] {
     }
   }
 
-  input:checked + .slider {
+  input:checked+.slider {
     background-color: #474040;
-  
+
     &:before {
       transform: translateX(13.5px);
     }
   }
 }
+
+//TODO: separate the styles into separate files for the SettingsItem and ToggleSwitch components

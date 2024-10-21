@@ -3,6 +3,10 @@ import classNames from "classnames";
 import { useState, useEffect } from "react";
 import './TimerStyle.scss';
 
+import {
+  getForwardButtonClass
+} from './classNames';
+
 import { useTimer } from "./useTimer";
 import { Modal } from "../components/Modal/Modal";
 import { TimerDelay } from "./TimerDelay";
@@ -74,11 +78,24 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
   return (
     <div className={`${timerName}-background background`}>
       <div className={`${timerName}-main-container main-container`}>
-        <Link to={timerName === 'focus' ? '/LongBreak' : timerName === 'long-break' ? '/ShortBreak' : '/Focus'}
+        <Link 
+          to={
+            timerName === 'focus'
+            ? '/LongBreak'
+            : timerName === 'long-break'
+            ? '/ShortBreak'
+            : '/Focus'
+          }
           className={`${timerName}-mode__btn mode__btn`}>
           <p className={`mode__ico ${timerName}-mode__ico icon-mode-${timerName}`}></p>
+
           <p className={`mode__text ${timerName}-mode__text`}>
-            {timerName === 'focus' ? 'Focus' : timerName === 'short-break' ? 'Short Break' : 'Long Break'}
+            {timerName === 'focus' 
+              ? 'Focus' 
+              : timerName === 'short-break' 
+              ? 'Short Break' 
+              : 'Long Break'
+            }
           </p>
         </Link>
 
@@ -88,7 +105,11 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
 
         <div className="handler-buttons">
           <button
-            className={`${timerName}-menu__btn handler__btn icon-menu-${timerName}`}
+            className={
+              `${timerName}-menu__btn 
+              handler__btn 
+              icon-menu-${timerName}`
+            }
             onClick={windowIsOpen}
           ></button>
 
@@ -101,6 +122,7 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
                 focusTime={focusTime}
                 shortTime={shortTime}
                 longTime={longTime}
+                timerName={timerName}
               />
             </div>
           )}
@@ -111,7 +133,7 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
           ></button>
           
           <button
-            className={`handler__btn ${timerName}-forward__btn icon-fast-forward-${timerName}`}
+            className={getForwardButtonClass(timerName)}
             onClick={resetTimer}
           ></button>
         </div>
