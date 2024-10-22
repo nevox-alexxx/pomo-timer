@@ -1,14 +1,27 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
-import './TimerStyle.scss';
+
+import './styles/TimerStyle.scss';
+import './styles/FocusTimerStyle.scss';
+import './styles/LongBreakStyle.scss';
+import './styles/ShortBreakStyle.scss';
 
 import {
-  getForwardButtonClass
-} from './classNames';
+  getBackgroundClass,
+  getMainContainerClass,
+  getForwardButtonClass,
+  getMenuButtonClass,
+  getModeButtonClass,
+  getModeIconClass,
+  getModeTextClass,
+  getTimerClass,
+  getTimerNameContent,
+  getModeLinkPath
+} from './timerStylesHelper';
 
 import { useTimer } from "./useTimer";
-import { Modal } from "../components/Modal/Modal";
+import { Modal } from "../Modal/components/Modal";
 import { TimerDelay } from "./TimerDelay";
 
 interface TimerProps extends TimerDelay {
@@ -27,10 +40,10 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     () => parseInt(localStorage.getItem('longTime') || `${defaultLongBreak}`)
   );
 
-  const defaultTime = timerName === 'focus' ?focusTime
+  const defaultTime = timerName === 'focus' ? focusTime
     : timerName === 'short-break' ? shortTime
-    : longTime;
-  
+      : longTime;
+
   const {
     timeLeft,
     togglePlay,
@@ -53,13 +66,19 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     }
   );
 
-  const handleSaveSettings = (newFocusTime: number, newShortTime: number, newLongTime: number) => {
+  const handleSaveSettings = (
+    newFocusTime: number,
+    newShortTime: number,
+    newLongTime: number
+  ) => {
     setFocusTime(newFocusTime);
     setShortTime(newShortTime);
     setLongTime(newLongTime);
 
-    const newTime = timerName === 'focus' ? newFocusTime
-      : timerName === 'short-break' ? newShortTime
+    const newTime = timerName === 'focus'
+      ? newFocusTime
+      : timerName === 'short-break'
+        ? newShortTime
         : newLongTime;
     setTimeLeft(newTime * SECONDS_IN_MINUTE);
 
@@ -76,40 +95,25 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
   }, [defaultTime, SECONDS_IN_MINUTE, setTimeLeft])
 
   return (
-    <div className={`${timerName}-background background`}>
-      <div className={`${timerName}-main-container main-container`}>
-        <Link 
-          to={
-            timerName === 'focus'
-            ? '/LongBreak'
-            : timerName === 'long-break'
-            ? '/ShortBreak'
-            : '/Focus'
-          }
-          className={`${timerName}-mode__btn mode__btn`}>
-          <p className={`mode__ico ${timerName}-mode__ico icon-mode-${timerName}`}></p>
+    <div className={getBackgroundClass(timerName)}>
+      <div className={getMainContainerClass(timerName)}>
+        <Link
+          to={getModeLinkPath(timerName)}
+          className={getModeButtonClass(timerName)}>
+          <p className={getModeIconClass(timerName)}></p>
 
-          <p className={`mode__text ${timerName}-mode__text`}>
-            {timerName === 'focus' 
-              ? 'Focus' 
-              : timerName === 'short-break' 
-              ? 'Short Break' 
-              : 'Long Break'
-            }
+          <p className={getModeTextClass(timerName)}>
+            {getTimerNameContent(timerName)}
           </p>
         </Link>
 
-        <div className={`${timerName}-timer timer`}>
+        <div className={getTimerClass(timerName)}>
           {formatTime(timeLeft)}
         </div>
 
         <div className="handler-buttons">
           <button
-            className={
-              `${timerName}-menu__btn 
-              handler__btn 
-              icon-menu-${timerName}`
-            }
+            className={getMenuButtonClass(timerName)}
             onClick={windowIsOpen}
           ></button>
 
@@ -131,7 +135,7 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
             className={btnClass}
             onClick={togglePlay}
           ></button>
-          
+
           <button
             className={getForwardButtonClass(timerName)}
             onClick={resetTimer}

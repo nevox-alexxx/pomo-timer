@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App.tsx'
-import { Timer } from './timers/Timer.tsx'
+import { Timer } from './components/Timer/Timer.tsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 

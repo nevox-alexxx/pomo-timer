@@ -1,4 +1,4 @@
-@import "../../assets/color-variables.scss";
+@import "../../../assets/color-variables.scss";
 
 input[type="number"] {
 
@@ -143,5 +143,3 @@ input[type="number"] {
     }
   }
 }
-
-//TODO: separate the styles into separate files for the SettingsItem and ToggleSwitch components

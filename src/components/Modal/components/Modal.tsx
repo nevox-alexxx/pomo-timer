@@ -1,7 +1,7 @@
-import "./ModalStyle.scss";
-import "./ModalColorStyle.scss";
-import { ModalProps } from "./ModalProps";
-import { useModal } from "./useModal";
+import "../styles/ModalStyle.scss";
+import "../styles/ModalColorStyle.scss";
+import { ModalProps } from "../types/ModalProps";
+import { useModal } from "../hooks/useModal";
 import { SettingsItem } from "./SettingsItem";
 import { ToggleSwitch } from "./ToggleSwitch";
 

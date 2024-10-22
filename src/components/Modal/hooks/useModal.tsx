@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ModalProps } from "./ModalProps";
+import { ModalProps } from "../types/ModalProps";
 
 export function useModal({
   isOpen,

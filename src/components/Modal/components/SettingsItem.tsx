@@ -1,4 +1,4 @@
-import { SettingsItemProps } from "./ModalProps";
+import { SettingsItemProps } from "../types/ModalProps";
 
 export function SettingsItem({
   label,

@@ -1,4 +1,4 @@
-import { ToggleSwitchProps } from "./ModalProps";
+import { ToggleSwitchProps } from "../types/ModalProps";
 
 export function ToggleSwitch({ label, id, timerName }: ToggleSwitchProps) {
   return (

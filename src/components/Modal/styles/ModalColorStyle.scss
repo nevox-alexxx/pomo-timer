@@ -1,4 +1,4 @@
-@import "../../assets/color-variables.scss";
+@import "../../../assets/color-variables.scss";
 
 //Modal main
 .focus-settings-container {
@@ -101,5 +101,3 @@
     background-color: $long-break-light-background;
   }
 }
-
-//TODO: separate the styles into separate files for the SettingsItem and ToggleSwitch components

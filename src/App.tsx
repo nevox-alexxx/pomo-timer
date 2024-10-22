@@ -1,7 +1,7 @@
 import './App.scss';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
 
-import { Timer } from './timers/Timer';
+import { Timer } from './components/Timer/Timer';
 
 function App() {
 

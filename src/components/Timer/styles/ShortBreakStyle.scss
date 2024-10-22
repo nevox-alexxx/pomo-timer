@@ -1,0 +1,31 @@
+@import '../../../assets/color-variables.scss';
+
+.short-break-background, .short-break-main-container {
+  background-color: $short-break-light-background;
+}
+
+.short-break-mode__btn {
+  background-color: $short-break-light-secondary-btn;
+  border: 2px solid $short-break-light-text-color;
+  width: 160px;
+}
+
+.short-break-mode__text, .short-break-timer {
+  color: $short-break-light-text-color;
+}
+
+.short-break-menu__btn, .short-break-forward__btn {
+  background-color: $short-break-light-secondary-btn;
+}
+
+.short-break-start__btn {
+  background-color: $short-break-light-switch-btn;
+}
+
+.short-break-menu__btn {
+  margin-right: 15px;
+}
+
+.short-break-forward__btn {
+  margin-left: 15px;
+}

@@ -1,7 +1,7 @@
 import './InfoBlock.scss';
 
 export function InfoBlock() {
-  const version = '0.1.0';
+  const version = '0.2.0';
 
   return (
     <div className="info-block">
