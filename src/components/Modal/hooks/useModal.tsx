@@ -13,6 +13,14 @@ export function useModal({
   const [shortTime, setShortTime] = useState<number>(initialShortTime);
   const [longTime, setLongTime] = useState<number>(initialLongTime);
 
+  const [darkTheme, setDarkTheme] = useState<Record<string, boolean>>({
+    focus: false,
+    shortBreak: false,
+    longBreak: false,
+  });
+
+  const [notifications, setNotifications] = useState<boolean>(false)
+
   useEffect(() => {
     const savedFocusTime = localStorage.getItem("focusTime");
     const savedShortTime = localStorage.getItem("shortTime");
@@ -21,6 +29,11 @@ export function useModal({
     if (savedFocusTime) setFocusTime(Number(savedFocusTime));
     if (savedShortTime) setShortTime(Number(savedShortTime));
     if (savedLongTime) setLongTime(Number(savedLongTime));
+
+    const savedTheme = localStorage.getItem('darkTheme');
+    if (savedTheme) {
+      setDarkTheme(JSON.parse(savedTheme));
+    }
   }, [isOpen]);
 
   const incrementValue = (value: number) => value + 1;
@@ -30,6 +43,19 @@ export function useModal({
     onSave(focusTime, shortTime, longTime);
     onClose();
   };
+
+  const handleDarkTheme = (timerName: string) => {
+    const updatedTheme = {
+      ...darkTheme,
+      [timerName]: !darkTheme[timerName],
+    }
+    setDarkTheme(updatedTheme);
+    localStorage.setItem('darkTheme', JSON.stringify(updatedTheme));
+  }
+
+  const handleNotification = () => {
+    setNotifications(!notifications)
+  }
 
   return {
     focusTime,
@@ -41,5 +67,8 @@ export function useModal({
     incrementValue,
     decrementValue,
     handleSaving,
+    handleDarkTheme,
+    handleNotification,
+    darkTheme
   };
 }

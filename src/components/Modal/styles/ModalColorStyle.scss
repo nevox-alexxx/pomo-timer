@@ -1,6 +1,18 @@
 @import "../../../assets/color-variables.scss";
 
 //Modal main
+.focus-text-options {
+  color: $focus-light-text-color
+}
+
+.short-break-text-options {
+  color: $focus-light-text-color
+}
+
+.long-break-text-options {
+  color: $focus-light-text-color
+}
+
 .focus-settings-container {
   background-color: $focus-light-background;
 

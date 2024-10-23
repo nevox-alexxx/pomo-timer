@@ -6,19 +6,19 @@ export function SettingsItem({
   onIncrement,
   onDecrement,
   onChange,
-  timerName
+  themeClass
 }: SettingsItemProps) {
 
   return (
     <div className="settings-item">
-      <label>{label}</label>
+      <label className={`${themeClass}-text-options`}>{label}</label>
       <div 
-        className={`${timerName}-custom-number-input custom-number-input`}>
+        className={`${themeClass}-custom-number-input custom-number-input`}>
         <input 
           type="number"
           value={value}
           onChange={onChange}
-          className={`${timerName}-number-input number-input`} 
+          className={`${themeClass}-number-input number-input`} 
         />
         <div className="button-wrapper">
           <button className="arrow-up" onClick={onIncrement}>▲</button>

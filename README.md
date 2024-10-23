@@ -1,6 +1,6 @@
 # Pomo - Pomodoro Timer App
 
-**Version:** 0.1.0
+**Version:** 0.2.0
 
 ## Overview
 Pomo is a user-friendly Pomodoro timer designed to enhance productivity through time management. 

@@ -4,12 +4,14 @@ export interface ModalProps {
   focusTime: number;
   shortTime: number;
   longTime: number;
+  themeClass: string;
   onSave: (newFocusTime: number, newShortTime: number, newLongTime: number) => void;
 }
 
 export interface SettingsItemProps {
   label: string;
   value: number;
+  themeClass: string;
   timerName: 'focus' | 'short-break' | 'long-break';
   onIncrement: () => void;
   onDecrement: () => void;
@@ -19,5 +21,8 @@ export interface SettingsItemProps {
 export interface ToggleSwitchProps {
   label: string;
   id: string;
+  themeClass: string;
+  onToggle: () => void;
+  isChecked: boolean;
   timerName: 'focus' | 'short-break' | 'long-break';
 }
