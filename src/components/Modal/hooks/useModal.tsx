@@ -44,15 +44,6 @@ export function useModal({
     onClose();
   };
 
-  const handleDarkTheme = (timerName: string) => {
-    const updatedTheme = {
-      ...darkTheme,
-      [timerName]: !darkTheme[timerName],
-    }
-    setDarkTheme(updatedTheme);
-    localStorage.setItem('darkTheme', JSON.stringify(updatedTheme));
-  }
-
   const handleNotification = () => {
     setNotifications(!notifications)
   }
@@ -67,7 +58,6 @@ export function useModal({
     incrementValue,
     decrementValue,
     handleSaving,
-    handleDarkTheme,
     handleNotification,
     darkTheme
   };

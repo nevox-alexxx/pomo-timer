@@ -3,9 +3,15 @@ import classNames from "classnames";
 import { useState, useEffect } from "react";
 
 import './styles/TimerStyle.scss';
-import './styles/FocusTimerStyle.scss';
-import './styles/LongBreakStyle.scss';
-import './styles/ShortBreakStyle.scss';
+
+import './styles/FocusLightTheme.scss';
+import './styles/FocusDarkTheme.scss';
+
+import './styles/LongBreakLightTheme.scss';
+import './styles/LongBreakDarkTheme.scss';
+
+import './styles/ShortBreakLightTheme.scss';
+import './styles/ShortBreakDarkTheme.scss';
 
 import {
   getBackgroundClass,
@@ -26,6 +32,7 @@ import { TimerDelay } from "./TimerDelay";
 
 interface TimerProps extends TimerDelay {
   timerName: 'focus' | 'short-break' | 'long-break';
+  themeClass: string;
 }
 
 export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultLongBreak }: TimerProps) {
@@ -57,19 +64,10 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     SECONDS_IN_MINUTE,
   } = useTimer({ defaultTime });
 
-  const btnClass = classNames(
-    'btn',
-    `start__btn ${timerName}-start__btn`,
-    {
-      [`icon-play-${timerName}`]: !isPressed,
-      [`icon-pause-${timerName}`]: isPressed,
-    }
-  );
-
   const handleSaveSettings = (
     newFocusTime: number,
     newShortTime: number,
-    newLongTime: number
+    newLongTime: number,
   ) => {
     setFocusTime(newFocusTime);
     setShortTime(newShortTime);
@@ -94,26 +92,52 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
   }, [defaultTime, SECONDS_IN_MINUTE, setTimeLeft])
 
+  const [darkTheme, setDarkTheme] = useState<Record<string, boolean>>({
+    focus: false,
+    shortBreak: false,
+    longBreak: false,
+  });
+
+  const handleDarkTheme = (timerName: string) => {
+    const updatedTheme = {
+      ...darkTheme,
+      [timerName]: !darkTheme[timerName],
+    };
+    setDarkTheme(updatedTheme);
+    localStorage.setItem('darkTheme', JSON.stringify(updatedTheme));
+  }
+
+  const themeClass = darkTheme[timerName] ? `${timerName}-dark` : `${timerName}`;
+
+  const btnClass = classNames(
+    'btn',
+    `start__btn ${themeClass}-start__btn`,
+    {
+      [`icon-play-${themeClass}`]: !isPressed,
+      [`icon-pause-${themeClass}`]: isPressed,
+    }
+  );
+
   return (
-    <div className={getBackgroundClass(timerName)}>
-      <div className={getMainContainerClass(timerName)}>
+    <div className={getBackgroundClass(themeClass)}>
+      <div className={getMainContainerClass(themeClass)}>
         <Link
           to={getModeLinkPath(timerName)}
-          className={getModeButtonClass(timerName)}>
-          <p className={getModeIconClass(timerName)}></p>
+          className={getModeButtonClass(themeClass)}>
+          <p className={getModeIconClass(themeClass)}></p>
 
-          <p className={getModeTextClass(timerName)}>
+          <p className={getModeTextClass(themeClass)}>
             {getTimerNameContent(timerName)}
           </p>
         </Link>
 
-        <div className={getTimerClass(timerName)}>
+        <div className={getTimerClass(themeClass)}>
           {formatTime(timeLeft)}
         </div>
 
         <div className="handler-buttons">
           <button
-            className={getMenuButtonClass(timerName)}
+            className={getMenuButtonClass(themeClass)}
             onClick={windowIsOpen}
           ></button>
 
@@ -126,7 +150,10 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
                 focusTime={focusTime}
                 shortTime={shortTime}
                 longTime={longTime}
+                themeClass={themeClass}
                 timerName={timerName}
+                darkTheme={darkTheme}
+                onThemeToggle={handleDarkTheme}
               />
             </div>
           )}
@@ -137,7 +164,7 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
           ></button>
 
           <button
-            className={getForwardButtonClass(timerName)}
+            className={getForwardButtonClass(themeClass)}
             onClick={resetTimer}
           ></button>
         </div>

@@ -1,36 +1,36 @@
-export const getBackgroundClass = (timerName: string) =>
-  `${timerName}-background 
+export const getBackgroundClass = (themeClass: string) =>
+  `${themeClass}-background 
   background`;
 
-export const getMainContainerClass = (timerName: string) =>
-  `${timerName}-main-container 
+export const getMainContainerClass = (themeClass: string) =>
+  `${themeClass}-main-container 
   main-container`;
 
-export const getForwardButtonClass = (timerName: string) =>
+export const getForwardButtonClass = (themeClass: string) =>
   `handler__btn
-  ${timerName}-forward__btn
-  icon-fast-forward-${timerName}`;
+  ${themeClass}-forward__btn
+  icon-fast-forward-${themeClass}`;
 
-export const getMenuButtonClass = (timerName: string) =>
-  `${timerName}-menu__btn 
+export const getMenuButtonClass = (themeClass: string) =>
+  `${themeClass}-menu__btn 
   handler__btn 
-  icon-menu-${timerName}`;
+  icon-menu-${themeClass}`;
 
-export const getModeButtonClass = (timerName: string) =>
-  `${timerName}-mode__btn 
+export const getModeButtonClass = (themeClass: string) =>
+  `${themeClass}-mode__btn 
   mode__btn`;
 
-export const getModeIconClass = (timerName: string) =>
+export const getModeIconClass = (themeClass: string) =>
   `mode__ico 
-  ${timerName}-mode__ico 
-  icon-mode-${timerName}`;
+  ${themeClass}-mode__ico 
+  icon-mode-${themeClass}`;
 
-export const getModeTextClass = (timerName: string) =>
+export const getModeTextClass = (themeClass: string) =>
   `mode__text
-  ${timerName}-mode__text`;
+  ${themeClass}-mode__text`;
 
-export const getTimerClass = (timerName: string) =>
-  `${timerName}-timer 
+export const getTimerClass = (themeClass: string) =>
+  `${themeClass}-timer 
     timer`;
 
 export const getTimerNameContent = (timerName: string) =>

@@ -8,9 +8,12 @@ import { ToggleSwitch } from "./ToggleSwitch";
 
 interface ModalNames extends ModalProps {
   timerName: 'focus' | 'short-break' | 'long-break';
+  themeClass: string;
+  darkTheme: Record<string, boolean>;
+  onThemeToggle: (timerName: string) => void;
 }
 
-export function Modal({ timerName, ...props}: ModalNames) {
+export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, ...props}: ModalNames) {
   const {
     focusTime,
     shortTime,
@@ -21,14 +24,10 @@ export function Modal({ timerName, ...props}: ModalNames) {
     incrementValue,
     decrementValue,
     handleSaving,
-    handleDarkTheme,
-    darkTheme,
     handleNotification
   } = useModal(props);
 
   if (!props.isOpen) return null;
-
-  const themeClass = darkTheme[timerName] ? `${timerName}-dark` : `${timerName}`;
 
   return (
     <div className={`${themeClass}-settings-container settings-container`}>
@@ -42,7 +41,7 @@ export function Modal({ timerName, ...props}: ModalNames) {
         timerName={timerName}
         themeClass={themeClass} 
         isChecked={darkTheme[timerName]}
-        onToggle={() => handleDarkTheme(timerName)}
+        onToggle={() => onThemeToggle(timerName)}
       />
 
       <SettingsItem

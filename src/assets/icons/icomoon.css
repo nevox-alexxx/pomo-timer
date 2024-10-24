@@ -34,9 +34,19 @@
   color: #153047;
 }
 
+.icon-mode-long-break-dark:before {
+  content: "\e900";
+  color: #f2f9ff;
+}
+
 .icon-mode-short-break:before {
   content: "\e900";
   color: #14401d;
+}
+
+.icon-mode-short-break-dark:before {
+  content: "\e900";
+  color: #f2fff5;;
 }
 
 .icon-statistic:before {
@@ -69,6 +79,23 @@
   color: #14401d;
 }
 
+.icon-fast-forward-focus-dark:before {
+  content: "\e904";
+  color: #fff2f2;
+}
+
+.icon-fast-forward-long-break-dark:before {
+  content: "\e904";
+  color: #f2f9ff;
+}
+
+.icon-fast-forward-short-break-dark:before {
+  content: "\e904";
+  color: #f2fff5;
+}
+
+/* PLAY ICONS */
+
 .icon-play-focus:before {
   content: "\e905";
   color: #471515;
@@ -84,6 +111,22 @@
   color: #153047;
 }
 
+.icon-play-focus-dark:before {
+  content: "\e905";
+  color: #fff2f2;
+}
+
+.icon-play-short-break-dark:before {
+  content: "\e905";
+  color: #f2f9ff;
+}
+
+.icon-play-long-break-dark:before {
+  content: "\e905";
+  color: #f2fff5;
+}
+
+/* PAUSE ICONS */
 .icon-pause-focus:before {
   content: "\e906";
   color: #471515;
@@ -99,6 +142,22 @@
   color: #153047;
 }
 
+.icon-pause-focus-dark:before {
+  content: "\e906";
+  color: #fff2f2;
+}
+
+.icon-pause-short-break-dark:before {
+  content: "\e906";
+  color: #f2f9ff;
+}
+
+.icon-pause-long-break-dark:before {
+  content: "\e906";
+  color: #f2fff5;
+}
+
+/* Menu icons */
 .icon-menu-focus:before {
   content: "\e907";
   color: #471515;
@@ -113,6 +172,22 @@
   content: "\e907";
   color: #14401d;
 }
+
+.icon-menu-focus-dark:before {
+  content: "\e907";
+  color: #fff2f2;
+}
+
+.icon-menu-long-break-dark:before {
+  content: "\e907";
+  color: #f2f9ff;
+}
+
+.icon-menu-short-break-dark:before {
+  content: "\e907";
+  color: #f2fff5;
+}
+
 
 .icon-clock .path1:before {
   content: "\e908";

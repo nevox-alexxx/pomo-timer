@@ -4,7 +4,6 @@ export interface ModalProps {
   focusTime: number;
   shortTime: number;
   longTime: number;
-  themeClass: string;
   onSave: (newFocusTime: number, newShortTime: number, newLongTime: number) => void;
 }
 

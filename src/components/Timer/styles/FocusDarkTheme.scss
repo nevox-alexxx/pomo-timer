@@ -1,0 +1,40 @@
+@import '../../../assets/color-variables.scss';
+
+.focus-dark-background, .focus-dark-main-container {
+  background-color: $focus-dark-background;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.focus-dark-mode__btn {
+  background-color: $focus-dark-secondary-btn;
+  border: 2px solid $focus-dark-text-color;
+  width: 120px;
+}
+
+.focus-dark-mode__ico {
+  background-image: url(../../../assets/icons/icoBackUp/brainDark.svg);
+  width: 25px;
+  height: 21px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.focus-dark-mode__text, .focus-dark-timer {
+  color: $focus-dark-text-color;
+}
+
+.focus-dark-menu__btn, .focus-dark-forward__btn {
+  background-color: $focus-dark-secondary-btn;
+}
+
+.focus-dark-start__btn{
+  background-color: $focus-dark-switch-btn;
+}
+
+.focus-dark-menu__btn {
+  margin-right: 15px;
+}
+
+.focus-dark-forward__btn {
+  margin-left: 15px;
+}
