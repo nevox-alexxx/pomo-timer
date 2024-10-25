@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { ToggleSwitchProps } from "../types/ModalProps";
 
-export function ToggleSwitch({ label, id, isChecked, themeClass, onToggle }: ToggleSwitchProps) {
+export function ToggleSwitch({ label, id, isChecked = false, themeClass, onToggle }: ToggleSwitchProps) {
   const [checked, setChecked] = useState(isChecked);
 
   useEffect(() => {
     setChecked(isChecked);
-  }, [isChecked])
+  }, [isChecked]);
 
   const handleChange = () => {
     setChecked(!checked);
     onToggle();
-  }
+  };
+
   return (
     <div className="settings-item toggle">
       <label htmlFor={id} className={`${themeClass}-text-options`}>{label}</label>

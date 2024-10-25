@@ -2,17 +2,7 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
 
-import './styles/TimerStyle.scss';
-
-import './styles/FocusLightTheme.scss';
-import './styles/FocusDarkTheme.scss';
-
-import './styles/LongBreakLightTheme.scss';
-import './styles/LongBreakDarkTheme.scss';
-
-import './styles/ShortBreakLightTheme.scss';
-import './styles/ShortBreakDarkTheme.scss';
-
+import './TimerStyleLinks.scss';
 import {
   getBackgroundClass,
   getMainContainerClass,
@@ -61,7 +51,10 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     modalWindowIsOpen,
     windowIsOpen,
     windowIsClose,
+    handleTimerExpiration,
     SECONDS_IN_MINUTE,
+    handleAlertEnabled,
+    alert
   } = useTimer({ defaultTime });
 
   const handleSaveSettings = (
@@ -87,6 +80,19 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     windowIsClose();
     resetTimer();
   }
+
+  useEffect(() => {
+    if (timeLeft === 0) {
+      handleTimerExpiration()
+    }
+  }, [timeLeft, handleTimerExpiration]);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('darkTheme');
+    if (savedTheme) {
+      setDarkTheme(JSON.parse(savedTheme));
+    }
+  }, []);
 
   useEffect(() => {
     setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
@@ -154,6 +160,8 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
                 timerName={timerName}
                 darkTheme={darkTheme}
                 onThemeToggle={handleDarkTheme}
+                onAlertToggle={handleAlertEnabled}
+                alert={alert}
               />
             </div>
           )}

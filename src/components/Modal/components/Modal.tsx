@@ -10,10 +10,12 @@ interface ModalNames extends ModalProps {
   timerName: 'focus' | 'short-break' | 'long-break';
   themeClass: string;
   darkTheme: Record<string, boolean>;
+  alert: boolean;
   onThemeToggle: (timerName: string) => void;
+  onAlertToggle: (timerName: string) => void;
 }
 
-export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, ...props}: ModalNames) {
+export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, onAlertToggle, alert, ...props}: ModalNames) {
   const {
     focusTime,
     shortTime,
@@ -24,7 +26,6 @@ export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, ...prop
     incrementValue,
     decrementValue,
     handleSaving,
-    handleNotification
   } = useModal(props);
 
   if (!props.isOpen) return null;
@@ -79,8 +80,8 @@ export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, ...prop
         id="notifications" 
         timerName={timerName}
         themeClass={themeClass}
-        isChecked={darkTheme[timerName]}
-        onToggle={handleNotification}
+        isChecked={alert ?? false}
+        onToggle={() => onAlertToggle(timerName)} 
       />
     </div>
   );

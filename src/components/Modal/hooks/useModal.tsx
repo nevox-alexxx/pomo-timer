@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { ModalProps } from "../types/ModalProps";
 
 export function useModal({
-  isOpen,
   focusTime: initialFocusTime,
   shortTime: initialShortTime,
   longTime: initialLongTime,
@@ -13,13 +12,7 @@ export function useModal({
   const [shortTime, setShortTime] = useState<number>(initialShortTime);
   const [longTime, setLongTime] = useState<number>(initialLongTime);
 
-  const [darkTheme, setDarkTheme] = useState<Record<string, boolean>>({
-    focus: false,
-    shortBreak: false,
-    longBreak: false,
-  });
-
-  const [notifications, setNotifications] = useState<boolean>(false)
+  const [darkTheme, setDarkTheme] = useState<boolean>(false);
 
   useEffect(() => {
     const savedFocusTime = localStorage.getItem("focusTime");
@@ -29,12 +22,11 @@ export function useModal({
     if (savedFocusTime) setFocusTime(Number(savedFocusTime));
     if (savedShortTime) setShortTime(Number(savedShortTime));
     if (savedLongTime) setLongTime(Number(savedLongTime));
+  }, []);
 
-    const savedTheme = localStorage.getItem('darkTheme');
-    if (savedTheme) {
-      setDarkTheme(JSON.parse(savedTheme));
-    }
-  }, [isOpen]);
+  useEffect(() => {
+    localStorage.setItem('darkTheme', JSON.stringify(darkTheme));
+  }, [darkTheme]);
 
   const incrementValue = (value: number) => value + 1;
   const decrementValue = (value: number) => (value > 0 ? value - 1 : 0);
@@ -43,10 +35,6 @@ export function useModal({
     onSave(focusTime, shortTime, longTime);
     onClose();
   };
-
-  const handleNotification = () => {
-    setNotifications(!notifications)
-  }
 
   return {
     focusTime,
@@ -58,7 +46,7 @@ export function useModal({
     incrementValue,
     decrementValue,
     handleSaving,
-    handleNotification,
-    darkTheme
+    darkTheme,
+    setDarkTheme,
   };
 }

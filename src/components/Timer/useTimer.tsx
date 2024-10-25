@@ -15,6 +15,22 @@ export function useTimer({defaultTime}: TimerProps) {
   const [isPressed, setIsPressed] = useState(false);
   const [modalWindowIsOpen, setModalWindowIsOpen] = useState(false);
 
+  const [alert, setAlert] = useState<boolean>(false);
+
+  const handleAlertEnabled = () => {
+    setAlert(prev => !prev);
+  };
+
+  const handleTimerExpiration = () => {
+    if (timeLeft === 0) {
+      setIsActive(false);
+      setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
+      setIsPressed(!isActive);
+      if (alert) {
+        console.log('Time is up!')
+      }
+    }
+  };
 
   useEffect(() => {
     let interval: number;
@@ -47,8 +63,6 @@ export function useTimer({defaultTime}: TimerProps) {
     }
   };
 
-  //TODO: add a function that will be triggered when the timer expires (notification and reset)
-
   const formatTime = (totalSeconds: number) => {
     const minutes = Math.floor(totalSeconds / SECONDS_IN_MINUTE);
     const seconds = totalSeconds % SECONDS_IN_MINUTE;
@@ -75,6 +89,9 @@ export function useTimer({defaultTime}: TimerProps) {
     windowIsOpen, 
     windowIsClose,
     setTimeLeft,
-    SECONDS_IN_MINUTE
+    handleTimerExpiration,
+    SECONDS_IN_MINUTE,
+    handleAlertEnabled,
+    alert
   };
 }
