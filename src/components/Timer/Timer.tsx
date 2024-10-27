@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
+import './helpers/timerStyleLinks.scss';
 
-import './TimerStyleLinks.scss';
 import {
   getBackgroundClass,
   getMainContainerClass,
@@ -14,11 +14,12 @@ import {
   getTimerClass,
   getTimerNameContent,
   getModeLinkPath
-} from './timerStylesHelper';
+} from './helpers/timerStylesHelper';
 
-import { useTimer } from "./useTimer";
+import { useTimer } from "./hooks/useTimer";
 import { Modal } from "../Modal/components/Modal";
-import { TimerDelay } from "./TimerDelay";
+import { TimerDelay } from "./helpers/TimerDelay";
+import { useDarkTheme } from "./hooks/useDarkTheme";
 
 interface TimerProps extends TimerDelay {
   timerName: 'focus' | 'short-break' | 'long-break';
@@ -82,39 +83,20 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
   }
 
   useEffect(() => {
+    setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
+  }, [defaultTime, SECONDS_IN_MINUTE, setTimeLeft])
+
+  // END timer logic
+  useEffect(() => {
     if (timeLeft === 0) {
       handleTimerExpiration()
     }
   }, [timeLeft, handleTimerExpiration]);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('darkTheme');
-    if (savedTheme) {
-      setDarkTheme(JSON.parse(savedTheme));
-    }
-  }, []);
-
-  useEffect(() => {
-    setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
-  }, [defaultTime, SECONDS_IN_MINUTE, setTimeLeft])
-
-  const [darkTheme, setDarkTheme] = useState<Record<string, boolean>>({
-    focus: false,
-    shortBreak: false,
-    longBreak: false,
-  });
-
-  const handleDarkTheme = (timerName: string) => {
-    const updatedTheme = {
-      ...darkTheme,
-      [timerName]: !darkTheme[timerName],
-    };
-    setDarkTheme(updatedTheme);
-    localStorage.setItem('darkTheme', JSON.stringify(updatedTheme));
-  }
-
+  const { darkTheme, handleDarkTheme } = useDarkTheme()
   const themeClass = darkTheme[timerName] ? `${timerName}-dark` : `${timerName}`;
 
+  //Play Pause btn logic
   const btnClass = classNames(
     'btn',
     `start__btn ${themeClass}-start__btn`,

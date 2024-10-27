@@ -15,7 +15,16 @@ interface ModalNames extends ModalProps {
   onAlertToggle: (timerName: string) => void;
 }
 
-export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, onAlertToggle, alert, ...props}: ModalNames) {
+export function Modal({
+  timerName,
+  themeClass,
+  darkTheme,
+  onThemeToggle,
+  onAlertToggle,
+  alert,
+  ...props
+}: ModalNames) {
+  
   const {
     focusTime,
     shortTime,
@@ -36,11 +45,11 @@ export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, onAlert
         <h2>Settings</h2>
         <button className="close-btn" onClick={handleSaving}>&times;</button>
       </div>
-      <ToggleSwitch 
-        label="Dark mode" 
+      <ToggleSwitch
+        label="Dark mode"
         id="dark-mode"
         timerName={timerName}
-        themeClass={themeClass} 
+        themeClass={themeClass}
         isChecked={darkTheme[timerName]}
         onToggle={() => onThemeToggle(timerName)}
       />
@@ -75,13 +84,13 @@ export function Modal({ timerName, themeClass, darkTheme, onThemeToggle, onAlert
         onChange={(e) => setShortTime(Number(e.target.value))}
       />
 
-      <ToggleSwitch 
-        label="Notifications" 
-        id="notifications" 
+      <ToggleSwitch
+        label="Notifications"
+        id="notifications"
         timerName={timerName}
         themeClass={themeClass}
         isChecked={alert ?? false}
-        onToggle={() => onAlertToggle(timerName)} 
+        onToggle={() => onAlertToggle(timerName)}
       />
     </div>
   );

@@ -18,6 +18,7 @@ const router = createBrowserRouter([
       defaultFocusTime={25}
       defaultShortBreak={5}
       defaultLongBreak={15}
+      themeClass='focus'
     />,
   },
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       defaultFocusTime={25}
       defaultShortBreak={5}
       defaultLongBreak={15}
+      themeClass=''
     />,
   },
   {
@@ -36,6 +38,7 @@ const router = createBrowserRouter([
       defaultFocusTime={25}
       defaultShortBreak={5}
       defaultLongBreak={15}
+      themeClass=''
     />,
   },
 ])

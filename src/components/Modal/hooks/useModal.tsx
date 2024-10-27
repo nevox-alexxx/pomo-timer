@@ -24,10 +24,6 @@ export function useModal({
     if (savedLongTime) setLongTime(Number(savedLongTime));
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('darkTheme', JSON.stringify(darkTheme));
-  }, [darkTheme]);
-
   const incrementValue = (value: number) => value + 1;
   const decrementValue = (value: number) => (value > 0 ? value - 1 : 0);
 

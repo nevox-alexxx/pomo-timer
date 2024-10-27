@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { ToggleSwitchProps } from "../types/ModalProps";
 
-export function ToggleSwitch({ label, id, isChecked = false, themeClass, onToggle }: ToggleSwitchProps) {
+export function ToggleSwitch({
+  label,
+  id,
+  isChecked = false,
+  themeClass,
+  onToggle
+}: ToggleSwitchProps) {
   const [checked, setChecked] = useState(isChecked);
 
   useEffect(() => {
@@ -15,13 +21,20 @@ export function ToggleSwitch({ label, id, isChecked = false, themeClass, onToggl
 
   return (
     <div className="settings-item toggle">
-      <label htmlFor={id} className={`${themeClass}-text-options`}>{label}</label>
-      <input 
-        type="checkbox" 
-        id={id} 
+      <label 
+        htmlFor={id} 
+        className={`${themeClass}-text-options`}
+      >
+        {label}
+      </label>
+
+      <input
+        type="checkbox"
+        id={id}
         checked={checked}
         onChange={handleChange}
       />
+
       <label
         htmlFor={id}
         className={`${themeClass}-slider slider`}

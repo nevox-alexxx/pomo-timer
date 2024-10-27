@@ -13,8 +13,10 @@ export function SettingsItem({
     <div className="settings-item">
       <label className={`${themeClass}-text-options`}>{label}</label>
       <div 
-        className={`${themeClass}-custom-number-input custom-number-input`}>
-        <input 
+        className={
+          `${themeClass}-custom-number-input 
+          custom-number-input`}>
+        <input
           type="number"
           value={value}
           onChange={onChange}

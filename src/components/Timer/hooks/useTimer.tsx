@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useAlertLogic } from "./useAlertLogic";
 
 interface TimerProps {
   defaultTime: number;
 }
 
-export function useTimer({defaultTime}: TimerProps) {
+export function useTimer({ defaultTime }: TimerProps) {
   const SECONDS_IN_MINUTE = 60;
   const [isActive, setIsActive] = useState(false);
-  
+
   // Initialize the time in seconds by multiplying defaultTime (in minutes) by SECONDS_IN_MINUTE,
   // since the timer works in seconds intervals.
   const [timeLeft, setTimeLeft] = useState(defaultTime * SECONDS_IN_MINUTE);
@@ -15,10 +16,12 @@ export function useTimer({defaultTime}: TimerProps) {
   const [isPressed, setIsPressed] = useState(false);
   const [modalWindowIsOpen, setModalWindowIsOpen] = useState(false);
 
+  const { setAlertEnabled, playAlert } = useAlertLogic();
   const [alert, setAlert] = useState<boolean>(false);
 
   const handleAlertEnabled = () => {
     setAlert(prev => !prev);
+    setAlertEnabled(true)
   };
 
   const handleTimerExpiration = () => {
@@ -28,6 +31,7 @@ export function useTimer({defaultTime}: TimerProps) {
       setIsPressed(!isActive);
       if (alert) {
         console.log('Time is up!')
+        playAlert();
       }
     }
   };
@@ -52,7 +56,7 @@ export function useTimer({defaultTime}: TimerProps) {
   };
 
   const resetTimer = () => {
-    if (isActive){
+    if (isActive) {
       setIsActive(false);
       setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
       setIsPressed(!isActive);
@@ -78,15 +82,15 @@ export function useTimer({defaultTime}: TimerProps) {
   const windowIsOpen = () => setModalWindowIsOpen(true);
   const windowIsClose = () => setModalWindowIsOpen(false);
 
-  return { 
-    timeLeft, 
-    isActive, 
-    togglePlay, 
-    resetTimer, 
-    formatTime, 
-    isPressed, 
-    modalWindowIsOpen, 
-    windowIsOpen, 
+  return {
+    timeLeft,
+    isActive,
+    togglePlay,
+    resetTimer,
+    formatTime,
+    isPressed,
+    modalWindowIsOpen,
+    windowIsOpen,
     windowIsClose,
     setTimeLeft,
     handleTimerExpiration,

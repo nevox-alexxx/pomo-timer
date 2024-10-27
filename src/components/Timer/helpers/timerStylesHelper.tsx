@@ -45,4 +45,4 @@ export const getModeLinkPath = (timerName: string) =>
     ? '/LongBreak'
     : timerName === 'long-break'
       ? '/ShortBreak'
-      : '/Focus'
+      : '/Focus';
