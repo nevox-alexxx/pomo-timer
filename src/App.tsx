@@ -1,9 +1,7 @@
 import './App.scss';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
 
-import { FocusTimer } from './timers/FocusTimer/FocusTimer';
-import { LongBreak } from './timers/LongBreak/LongBreak';
-import { ShortBreak } from './timers/ShortBreak/ShortBreak';
+import { Timer } from './timers/Timer';
 
 function App() {
 
@@ -13,7 +11,8 @@ function App() {
 
       <div className="timerX">
         <div className="timer-box focus">
-          <FocusTimer
+          <Timer
+            timerName='focus'
             defaultFocusTime={25}
             defaultShortBreak={5}
             defaultLongBreak={15}
@@ -21,7 +20,8 @@ function App() {
         </div>
 
         <div className="timer-box long-break">
-          <LongBreak
+          <Timer
+            timerName='short-break'
             defaultFocusTime={25}
             defaultShortBreak={5}
             defaultLongBreak={15}
@@ -29,7 +29,8 @@ function App() {
         </div>
 
         <div className="timer-box short-break">
-          <ShortBreak 
+          <Timer
+            timerName='long-break'
             defaultFocusTime={25}
             defaultShortBreak={5}
             defaultLongBreak={15}

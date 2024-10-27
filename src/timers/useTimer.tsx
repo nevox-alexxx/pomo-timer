@@ -72,6 +72,7 @@ export function useTimer({defaultTime}: TimerProps) {
     modalWindowIsOpen, 
     windowIsOpen, 
     windowIsClose,
-    setTimeLeft
+    setTimeLeft,
+    SECONDS_IN_MINUTE
   };
 }
