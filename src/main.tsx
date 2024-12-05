@@ -2,28 +2,44 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App.tsx'
-import { FocusTimer } from './timers/FocusTimer.tsx'
-import { LongBreak } from './timers/LongBreak.tsx'
-import { ShortBreak } from './timers/ShortBreak.tsx'
+import { Timer } from './components/Timer/Timer.tsx'
 
-import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<App />,
+    path: "/",
+    element: <App />,
   },
   {
-    path:"/FocusTimer",
-    element:<FocusTimer />,
+    path: "/Focus",
+    element: <Timer
+      timerName='focus'
+      defaultFocusTime={25}
+      defaultShortBreak={5}
+      defaultLongBreak={15}
+      themeClass='focus'
+    />,
   },
   {
-    path:"/LongBreak",
-    element:<LongBreak />,
+    path: "/LongBreak",
+    element: <Timer
+      timerName='long-break'
+      defaultFocusTime={25}
+      defaultShortBreak={5}
+      defaultLongBreak={15}
+      themeClass=''
+    />,
   },
   {
-    path:"/ShortBreak",
-    element:<ShortBreak />,
+    path: "/ShortBreak",
+    element: < Timer
+      timerName='short-break'
+      defaultFocusTime={25}
+      defaultShortBreak={5}
+      defaultLongBreak={15}
+      themeClass=''
+    />,
   },
 ])
 

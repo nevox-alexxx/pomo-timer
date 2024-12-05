@@ -1,10 +1,4 @@
-p {
-  margin: 0;
-}
-
-button {
-  cursor: pointer;
-}
+@import '../../../assets/color-variables.scss';
 
 .background {
   width: 100vw;
@@ -19,8 +13,7 @@ button {
   flex-direction: column;
   justify-content: center;
   width: 380px;
-  height: 100vh;
-  box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.3);
+  height: 98vh;
 }
 
 .mode__btn {
@@ -71,7 +64,7 @@ button {
   border: none;
 }
 
-.modal-wrapper{
+.modal-wrapper {
   position: fixed;
   top: 0;
   left: 0;

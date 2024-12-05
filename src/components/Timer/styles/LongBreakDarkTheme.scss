@@ -1,0 +1,32 @@
+@import '../../../assets/color-variables.scss';
+
+.long-break-dark-background, .long-break-dark-main-container {
+  background-color: $long-break-dark-background;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.long-break-dark-mode__btn {
+  background-color: $long-break-dark-secondary-btn;
+  border: 2px solid $long-break-dark-text-color;
+  width: 160px;
+}
+
+.long-break-dark-mode__text, .long-break-dark-timer{
+  color: $long-break-dark-text-color;
+}
+
+.long-break-dark-menu__btn, .long-break-dark-forward__btn {
+  background-color: $long-break-dark-secondary-btn;
+}
+
+.long-break-dark-start__btn {
+  background-color: $long-break-dark-switch-btn;
+}
+
+.long-break-dark-menu__btn {
+  margin-right: 15px;
+}
+
+.long-break-dark-forward__btn {
+  margin-left: 15px;
+}

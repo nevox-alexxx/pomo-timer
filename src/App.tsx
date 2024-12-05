@@ -1,31 +1,31 @@
 import './App.scss';
+import { useState, useEffect } from 'react';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
-
-import { FocusTimer } from './timers/FocusTimer';
-import { LongBreak } from './timers/LongBreak';
-import { ShortBreak } from './timers/ShortBreak';
+import { TimersBlock } from './components/TimersBlock/TimersBlock';
+import { PhoneMainPage } from './components/PhoneMainPage/PhoneMainPage';
 
 function App() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1080);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1080);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // TODO: 
   return (
     <div className="container">
-      <InfoBlock />
-
-      <div className="timerX">
-        <div className="timer-box focus">
-          <FocusTimer defaultFocusTime={25} />
-        </div>
-
-        <div className="timer-box long-break">
-          <LongBreak defaultLongBreak={15}/>
-        </div>
-
-        <div className="timer-box short-break">
-          <ShortBreak defaultShortBreak={5} />
-        </div>
-      </div>
+      {isMobile ? (
+        <PhoneMainPage />
+      ) : (
+        <>
+          <InfoBlock />
+          <TimersBlock />
+        </>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
