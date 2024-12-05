@@ -1,0 +1,219 @@
+@import '../../assets/color-variables.scss';
+
+.timer-container {
+  display: flex;
+  width: 55vw;
+  height: 100vh;
+  max-width: 1500px;
+  justify-content: flex-end;
+}
+
+.timer-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 380px;
+  height: 100vh;
+  box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.time {
+  font-size: 290px;
+  font-weight: 500;
+  line-height: 225px;
+  font-family: Roboto Flex;
+  transform: scaleY(0.78);
+  margin: 10px 0 20px 0;
+}
+
+.focus-timer,
+.long-break-timer,
+.short-break-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.focus-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 35px;
+
+  background-color: $focus-light-secondary-btn;
+
+  border: 2px solid $focus-light-text-color;
+  border-radius: 20px;
+  text-decoration: none;
+
+  &__ico {
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    line-height: 1;
+    font-size: large;
+    font-weight: 600;
+  }
+}
+
+.long-break-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 35px;
+
+  background-color: $long-break-light-secondary-btn;
+
+  border: 2px solid $long-break-light-text-color;
+  border-radius: 20px;
+  text-decoration: none;
+
+  &__ico {
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    line-height: 1;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    height: 35px;
+
+    border-radius: 20px;
+    text-decoration: none;
+  }
+}
+
+.short-break-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 35px;
+
+  background-color: $short-break-light-secondary-btn;
+
+  border: 2px solid $short-break-light-text-color;
+  border-radius: 20px;
+  text-decoration: none;
+
+  &__ico {
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    line-height: 1;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    height: 35px;
+
+    border-radius: 20px;
+    text-decoration: none;
+  }
+}
+
+.handler {
+  width: 55px;
+  height: 55px;
+  border-radius: 20px;
+  border: none;
+}
+
+.handler-focus {
+  background-color: $focus-light-secondary-btn;
+}
+.handler-short-break {
+  background-color: $short-break-light-secondary-btn;
+}
+.handler-long-break {
+  background-color: $long-break-light-secondary-btn;
+}
+
+.start__btn {
+  width: 85px;
+  height: 65px;
+  border-radius: 20px;
+  border: none;
+}
+
+.menu__btn {
+  margin-right: 15px;
+}
+
+.forward__btn {
+  margin-left: 15px;
+}
+
+.focus {
+  z-index: 3;
+  background-color: $focus-light-background;
+}
+
+.long-break {
+  z-index: 2;
+  background-color: $long-break-light-background;
+  transform: translateX(-70px);
+}
+
+.short-break {
+  z-index: 1;
+  background-color: $short-break-light-background;
+  transform: translateX(-140px);
+}
+
+@media screen and (max-width: 1800px ) {
+  .time {
+    font-size: 220px;
+    font-weight: 500;
+    line-height: 175px;
+    font-family: Roboto Flex;
+    transform: scaleY(0.78);
+    margin: 10px 0 20px 0;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .menu__btn {
+    margin-right: 5px;
+  }
+  
+  .forward__btn {
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-height: 615px) {
+  .time {
+    font-size: 220px;
+    font-weight: 500;
+    line-height: 175px;
+    font-family: Roboto Flex;
+    transform: scaleY(0.78);
+    margin: 10px 0 20px 0;
+  }
+}

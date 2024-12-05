@@ -1,55 +1,31 @@
-import { useNavigate } from 'react-router-dom';
-
 import './App.scss';
+import { useState, useEffect } from 'react';
 import { InfoBlock } from './components/InfoBlock/InfoBlock';
-import { Timer } from './components/Timer/Timer';
+import { TimersBlock } from './components/TimersBlock/TimersBlock';
+import { PhoneMainPage } from './components/PhoneMainPage/PhoneMainPage';
 
 function App() {
-  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1080);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1080);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // TODO: 
   return (
     <div className="container">
-      <InfoBlock />
-
-      <div className="timerX">
-        <div 
-          className="timer-box focus" 
-          onClick={() => navigate('/Focus')} >
-          <Timer
-            timerName='focus'
-            defaultFocusTime={25}
-            defaultShortBreak={5}
-            defaultLongBreak={15}
-            themeClass=''
-          />
-        </div>
-
-        <div 
-          className="timer-box long-break" 
-          onClick={() => navigate('/ShortBreak')}>
-          <Timer
-            timerName='short-break'
-            defaultFocusTime={25}
-            defaultShortBreak={5}
-            defaultLongBreak={15}
-            themeClass=''
-          />
-        </div>
-
-        <div 
-          className="timer-box short-break" 
-          onClick={() => navigate('/LongBreak')}>
-          <Timer
-            timerName='long-break'
-            defaultFocusTime={25}
-            defaultShortBreak={5}
-            defaultLongBreak={15}
-            themeClass=''
-          />
-        </div>
-      </div>
+      {isMobile ? (
+        <PhoneMainPage />
+      ) : (
+        <>
+          <InfoBlock />
+          <TimersBlock />
+        </>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
