@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
-import './helpers/timerStyleLinks.scss';
+import './helpers/TimerStyleLinks.scss';
 
 import {
   getBackgroundClass,
