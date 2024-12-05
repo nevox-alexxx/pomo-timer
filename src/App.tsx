@@ -13,6 +13,7 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // TODO: 
   return (
     <div className="container">
       {isMobile ? (
