@@ -1,0 +1,115 @@
+@import "../../../assets/color-variables.scss";
+
+//Modal main
+.focus-text-options {
+  color: $focus-light-text-color
+}
+
+.short-break-text-options {
+  color: $focus-light-text-color
+}
+
+.long-break-text-options {
+  color: $focus-light-text-color
+}
+
+.focus-settings-container {
+  background-color: $focus-light-background;
+
+  h2 {
+    color: $focus-light-text-color;
+  }
+
+  .close-btn {
+    color: $focus-light-text-color;
+  }
+}
+
+.short-break-settings-container {
+  background-color: $short-break-light-background;
+
+  h2 {
+    color: $short-break-light-text-color;
+  }
+
+  .close-btn {
+    color: $short-break-light-text-color;
+  }
+}
+
+.long-break-settings-container {
+  background-color: $long-break-light-background;
+
+  h2 {
+    color: $long-break-light-text-color;
+  }
+
+  .close-btn {
+    color: $long-break-light-text-color;
+  }
+}
+
+//SettingsItem
+.focus-custom-number-input {
+  border: 1px solid #d9cece;
+  background-color: $focus-light-background;
+
+  .focus-number-input {
+    color: $focus-light-text-color;
+  }
+
+  button {
+    color: $focus-light-text-color;
+  }
+}
+
+.short-break-custom-number-input {
+  border: 1px solid #ced9d0;
+  background-color: $short-break-light-background;
+
+  .short-break-number-input {
+    color: $short-break-light-text-color;
+  }
+
+  button {
+    color: $short-break-light-text-color;
+  }
+}
+
+.long-break-custom-number-input {
+  border: 1px solid #ced4d9;
+  background-color: $long-break-light-background;
+
+  .long-break-number-input {
+    color: $long-break-light-text-color;
+  }
+
+  button {
+    color: $long-break-light-text-color;
+  }
+}
+
+//ToggleSwitch
+.focus-slider {
+  background-color: #c2b8b8;
+
+  &:before {
+    background-color: $focus-light-background;
+  }
+}
+
+.short-break-slider {
+  background-color: #b8c2b8;
+
+  &:before {
+    background-color: $short-break-light-background;
+  }
+}
+
+.long-break-slider {
+  background-color: #b8bfc2;
+
+  &:before {
+    background-color: $long-break-light-background;
+  }
+}

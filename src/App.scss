@@ -32,6 +32,10 @@ button {
   cursor: pointer;
 }
 
+link { 
+  text-decoration: none;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -54,6 +58,8 @@ button {
   display: flex;
   width: 150px;
   height: 100vh;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .focus {

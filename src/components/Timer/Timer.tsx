@@ -1,14 +1,29 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
-import './TimerStyle.scss';
+import './helpers/timerStyleLinks.scss';
 
-import { useTimer } from "./useTimer";
-import { Modal } from "../components/Modal/Modal";
-import { TimerDelay } from "./TimerDelay";
+import {
+  getBackgroundClass,
+  getMainContainerClass,
+  getForwardButtonClass,
+  getMenuButtonClass,
+  getModeButtonClass,
+  getModeIconClass,
+  getModeTextClass,
+  getTimerClass,
+  getTimerNameContent,
+  getModeLinkPath
+} from './helpers/timerStylesHelper';
+
+import { useTimer } from "./hooks/useTimer";
+import { Modal } from "../Modal/components/Modal";
+import { TimerDelay } from "./helpers/TimerDelay";
+import { useDarkTheme } from "./hooks/useDarkTheme";
 
 interface TimerProps extends TimerDelay {
   timerName: 'focus' | 'short-break' | 'long-break';
+  themeClass: string;
 }
 
 export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultLongBreak }: TimerProps) {
@@ -23,10 +38,10 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     () => parseInt(localStorage.getItem('longTime') || `${defaultLongBreak}`)
   );
 
-  const defaultTime = timerName === 'focus' ?focusTime
+  const defaultTime = timerName === 'focus' ? focusTime
     : timerName === 'short-break' ? shortTime
-    : longTime;
-  
+      : longTime;
+
   const {
     timeLeft,
     togglePlay,
@@ -37,25 +52,25 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     modalWindowIsOpen,
     windowIsOpen,
     windowIsClose,
+    handleTimerExpiration,
     SECONDS_IN_MINUTE,
+    handleAlertEnabled,
+    alert
   } = useTimer({ defaultTime });
 
-  const btnClass = classNames(
-    'btn',
-    `start__btn ${timerName}-start__btn`,
-    {
-      [`icon-play-${timerName}`]: !isPressed,
-      [`icon-pause-${timerName}`]: isPressed,
-    }
-  );
-
-  const handleSaveSettings = (newFocusTime: number, newShortTime: number, newLongTime: number) => {
+  const handleSaveSettings = (
+    newFocusTime: number,
+    newShortTime: number,
+    newLongTime: number,
+  ) => {
     setFocusTime(newFocusTime);
     setShortTime(newShortTime);
     setLongTime(newLongTime);
 
-    const newTime = timerName === 'focus' ? newFocusTime
-      : timerName === 'short-break' ? newShortTime
+    const newTime = timerName === 'focus'
+      ? newFocusTime
+      : timerName === 'short-break'
+        ? newShortTime
         : newLongTime;
     setTimeLeft(newTime * SECONDS_IN_MINUTE);
 
@@ -71,24 +86,46 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     setTimeLeft(defaultTime * SECONDS_IN_MINUTE);
   }, [defaultTime, SECONDS_IN_MINUTE, setTimeLeft])
 
+  // END timer logic
+  useEffect(() => {
+    if (timeLeft === 0) {
+      handleTimerExpiration()
+    }
+  }, [timeLeft, handleTimerExpiration]);
+
+  const { darkTheme, handleDarkTheme } = useDarkTheme()
+  const themeClass = darkTheme[timerName] ? `${timerName}-dark` : `${timerName}`;
+
+  //Play Pause btn logic
+  const btnClass = classNames(
+    'btn',
+    `start__btn ${themeClass}-start__btn`,
+    {
+      [`icon-play-${themeClass}`]: !isPressed,
+      [`icon-pause-${themeClass}`]: isPressed,
+    }
+  );
+
   return (
-    <div className={`${timerName}-background background`}>
-      <div className={`${timerName}-main-container main-container`}>
-        <Link to={timerName === 'focus' ? '/LongBreak' : timerName === 'long-break' ? '/ShortBreak' : '/Focus'}
-          className={`${timerName}-mode__btn mode__btn`}>
-          <p className={`mode__ico ${timerName}-mode__ico icon-mode-${timerName}`}></p>
-          <p className={`mode__text ${timerName}-mode__text`}>
-            {timerName === 'focus' ? 'Focus' : timerName === 'short-break' ? 'Short Break' : 'Long Break'}
+    <div className={getBackgroundClass(themeClass)}>
+      <div className={getMainContainerClass(themeClass)}>
+        <Link
+          to={getModeLinkPath(timerName)}
+          className={getModeButtonClass(themeClass)}>
+          <p className={getModeIconClass(themeClass)}></p>
+
+          <p className={getModeTextClass(themeClass)}>
+            {getTimerNameContent(timerName)}
           </p>
         </Link>
 
-        <div className={`${timerName}-timer timer`}>
+        <div className={getTimerClass(themeClass)}>
           {formatTime(timeLeft)}
         </div>
 
         <div className="handler-buttons">
           <button
-            className={`${timerName}-menu__btn handler__btn icon-menu-${timerName}`}
+            className={getMenuButtonClass(themeClass)}
             onClick={windowIsOpen}
           ></button>
 
@@ -101,6 +138,12 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
                 focusTime={focusTime}
                 shortTime={shortTime}
                 longTime={longTime}
+                themeClass={themeClass}
+                timerName={timerName}
+                darkTheme={darkTheme}
+                onThemeToggle={handleDarkTheme}
+                onAlertToggle={handleAlertEnabled}
+                alert={alert}
               />
             </div>
           )}
@@ -109,9 +152,9 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
             className={btnClass}
             onClick={togglePlay}
           ></button>
-          
+
           <button
-            className={`handler__btn ${timerName}-forward__btn icon-fast-forward-${timerName}`}
+            className={getForwardButtonClass(themeClass)}
             onClick={resetTimer}
           ></button>
         </div>

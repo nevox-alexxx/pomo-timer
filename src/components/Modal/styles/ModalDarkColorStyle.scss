@@ -1,0 +1,124 @@
+@import "../../../assets/color-variables.scss";
+
+.focus-dark-text-options {
+  color:$focus-dark-text-color
+}
+
+.short-break-dark-text-options {
+  color:$short-break-dark-text-color
+}
+
+.long-break-dark-text-options {
+  color:$long-break-dark-text-color
+}
+
+.focus-dark-settings-container {
+  background-color: $focus-dark-background;
+
+  h2 {
+    color: $focus-dark-text-color;
+  }
+
+  .close-btn {
+    color: $focus-dark-text-color;
+  }
+}
+
+.short-break-dark-settings-container {
+  background-color: $short-break-dark-background;
+
+  h2 {
+    color: $short-break-dark-text-color;
+  }
+
+  .close-btn {
+    color: $short-break-dark-text-color;
+  }
+}
+
+.long-break-dark-settings-container {
+  background-color: $long-break-dark-background;
+
+  h2 {
+    color: $long-break-dark-text-color;
+  }
+
+  .close-btn {
+    color: $long-break-dark-text-color;
+  }
+}
+
+.focus-dark-custom-number-input {
+  border: 1px solid #d9cece;
+  background-color: $focus-dark-background;
+
+  .focus-dark-number-input {
+    color: $focus-dark-text-color;
+  }
+
+  button {
+    color: $focus-dark-text-color;
+  }
+}
+
+.short-break-dark-custom-number-input {
+  border: 1px solid #ced9d0;
+  background-color: $short-break-dark-background;
+
+  .short-break-dark-number-input {
+    color: $short-break-dark-text-color;
+  }
+
+  button {
+    color: $short-break-dark-text-color;
+  }
+}
+
+.long-break-dark-custom-number-input {
+  border: 1px solid #ced4d9;
+  background-color: $long-break-dark-background;
+
+  .long-break-dark-number-input {
+    color: $long-break-dark-text-color;
+  }
+
+  button {
+    color: $long-break-dark-text-color;
+  }
+}
+
+.focus-dark-slider {
+  background-color: #c2b8b8;
+
+  &:before {
+    background-color: $focus-dark-background;
+  }
+
+  input:checked+.slider {
+    background-color: #474040;
+  }
+}
+
+.short-break-dark-slider {
+  background-color: #b8c2b8;
+
+  &:before {
+    background-color: $short-break-dark-background;
+  }
+
+  input:checked+.short-break-slider {
+    background-color: #404742;
+  }
+}
+
+.long-break-dark-slider {
+  background-color: #b8bfc2;
+
+  &:before {
+    background-color: $long-break-dark-background;
+  }
+
+  input:checked+.long-break-slider {
+    background-color: #404447;
+  }
+}
