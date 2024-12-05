@@ -96,6 +96,6 @@ export function useTimer({ defaultTime }: TimerProps) {
     handleTimerExpiration,
     SECONDS_IN_MINUTE,
     handleAlertEnabled,
-    alert
+    alert,
   };
 }

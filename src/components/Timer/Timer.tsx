@@ -55,7 +55,7 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
     handleTimerExpiration,
     SECONDS_IN_MINUTE,
     handleAlertEnabled,
-    alert
+    alert,
   } = useTimer({ defaultTime });
 
   const handleSaveSettings = (
@@ -111,7 +111,8 @@ export function Timer({ timerName, defaultFocusTime, defaultShortBreak, defaultL
       <div className={getMainContainerClass(themeClass)}>
         <Link
           to={getModeLinkPath(timerName)}
-          className={getModeButtonClass(themeClass)}>
+          className={getModeButtonClass(themeClass)}
+          onClick={resetTimer}>
           <p className={getModeIconClass(themeClass)}></p>
 
           <p className={getModeTextClass(themeClass)}>
