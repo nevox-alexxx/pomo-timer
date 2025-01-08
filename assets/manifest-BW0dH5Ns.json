@@ -4,27 +4,27 @@
   "name": "Pomo Timer",
   "short_name": "Pomo",
   "description": "Pomo is a user-friendly Pomodoro timer designed to enhance productivity through time management. The app helps users stay focused and manage their work and break sessions effectively.",
-  "start_url": "/",
+  "start_url": "/pomo-timer/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "orientation": "any",
   "icons": [
     {
-      "src": "/pomo-timer/icon512.png",
+      "src": "icon512.png",
       "sizes": "512x512"
   }
   ],
 
   "screenshots": [
   {
-    "src": "/pomo-timer/screenshot-wide.png",
+    "src": "screenshot-wide.png",
     "sizes": "1920x1059",
     "type": "image/png",
     "form_factor": "wide"
   },
   {
-    "src": "/pomo-timer/screenshot-narrow.png",
+    "src": "screenshot-narrow.png",
     "sizes": "720x1280",
     "type": "image/png",
     "form_factor": "narrow"
