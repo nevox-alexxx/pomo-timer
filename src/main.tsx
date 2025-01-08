@@ -41,7 +41,11 @@ const router = createBrowserRouter([
       themeClass=''
     />,
   },
-])
+],
+  {
+    basename: "/pomo-timer/",
+  }
+);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
