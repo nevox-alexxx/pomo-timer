@@ -11,20 +11,20 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "./icon512.png",
+      "src": "/pomo-timer/icon512.png",
       "sizes": "512x512"
   }
   ],
 
   "screenshots": [
   {
-    "src": "./screenshot-wide.png",
+    "src": "/pomo-timer/screenshot-wide.png",
     "sizes": "1920x1059",
     "type": "image/png",
     "form_factor": "wide"
   },
   {
-    "src": "./screenshot-narrow.png",
+    "src": "/pomo-timer/screenshot-narrow.png",
     "sizes": "720x1280",
     "type": "image/png",
     "form_factor": "narrow"
