@@ -6,6 +6,17 @@ import { Timer } from './components/Timer/Timer.tsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/pomo-timer/service-worker.js')
+    .then((registration) => {
+      console.log('Service Worker registered successfully:', registration);
+    })
+    .catch((error) => {
+      console.error('Service Worker registration failed:', error);
+    });
+}
+
 const router = createBrowserRouter([
   {
     path: "/",

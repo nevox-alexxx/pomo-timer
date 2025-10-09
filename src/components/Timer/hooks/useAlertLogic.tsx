@@ -16,12 +16,25 @@ export function useAlertLogic() {
 
     if (permission === 'granted') {
       console.log('Permission granted for notifications');
+    } else {
+      console.warn('Permission denied for notifications');
     }
+    
   };
 
   const playAlert = () => {
     if (alertEnabled && Notification.permission === 'granted') {
-      new Notification("Time's up!", { body: "The timer has finished!" });
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then((registration) => {
+          registration.showNotification("Time's up!", {
+            body: 'The timer has finished!',
+            icon: '/pomo-timer/icon512.png',
+            tag: 'pomo-timer-notification',
+          });
+        });
+      }
+
+      // new Notification("Time's up!", { body: "The timer has finished!" });
       audio.play();
 
       setTimeout(() => {
